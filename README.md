@@ -63,30 +63,7 @@ A professional, enterprise-grade web application built for **Perfect Protection 
 
 ---
 
-## 🎯 Final-Year Project Demonstration Flow (For Viva)
 
-Examiners can be shown this exact 20-step end-to-end workflow:
-
-1. **Open Public Site:** Open `index.html` $\to$ Showcase institutional branding, trust badges, and live ticker.
-2. **Review Services:** Navigate to `services.html` $\to$ Filter by "Security" and "Housekeeping". Click "View Details" to see `service-details.html`.
-3. **Initiate Request:** Click "Request Staff" $\to$ Opens `request-service.html`.
-4. **Fill Step 1:** Enter Institution Name (e.g., `Government Model High School`), type `Government School`, contact person, email, and phone.
-5. **Fill Step 2:** Choose `School Security Guard Service`, shift `Morning`, and start date.
-6. **Fill Step 3:** Enter `3` Security Guards, `0` Supervisors, `2` Housekeepers. Note the live total updates to **5 Personnel**.
-7. **Step 4 Review:** Inspect the structured review summary and click "Submit Request".
-8. **Step 5 Confirmation:** Receive the generated Request ID (e.g., `REQ-2026-XXXX`). Click "Track Request Status".
-9. **Live Tracker (`track-request.html`):** See status at **Submitted** stage on the visual stepper.
-10. **Admin Login:** Go to `login.html`, toggle to "Administrator", and click Sign In.
-11. **Admin Dashboard (`admin/dashboard.html`):** Point out the 8 KPI cards, Chart.js graphs, and the newly submitted request in the recent table.
-12. **Manage Request (`admin/requests.html`):** Click "Manage / Action" on the new request.
-13. **Advance Workflow:** Click "Mark Under Review", then click "Approve Request".
-14. **Assign Staff (`admin/assignments.html`):** Allocate available Security Guard (e.g., `Dinesh Choudhary`) and Housekeeping staff. Click "Assign Staff Member".
-15. **Verify Assignment ID:** System issues `ASG-2026-XXXX` and updates the active roster.
-16. **Log Attendance (`admin/attendance.html`):** Pick today's date, select the assigned guard, mark **Present**, and click "Save Attendance Entry".
-17. **Check Live Updates:** Return to `admin/dashboard.html` to show updated KPI statistics.
-18. **Verify Customer Tracking:** Refresh `track-request.html` $\to$ Stepper has now advanced to **Staff Assigned / Active**, displaying the assigned guard's card!
-19. **Export Reports (`admin/reports.html`):** Demonstrate generating the Workforce Report and downloading the CSV export.
-20. **Reset Demo:** Navigate to `admin/settings.html` and click "Reset Demo Data Store" for the next demonstration.
 
 ---
 
