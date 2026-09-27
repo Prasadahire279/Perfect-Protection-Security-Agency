@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Requisitions | Customer Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    
+    <!-- Customer Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="bi bi-shield-shaded"></i></div>
+        <div>
+          <div class="brand-title">Perfect Protection</div>
+          <div class="brand-role">Client Institution Portal</div>
+        </div>
+      </div>
+
+      <div class="sidebar-menu-wrapper">
+        <div class="sidebar-category">Main Menu</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-speedometer2"></i> Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="my-requests.html" class="sidebar-nav-link active">
+              <span class="nav-icon-title"><i class="bi bi-card-checklist"></i> My Requests</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../request-service.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-plus-circle text-warning"></i> New Staff Request</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="my-enquiries.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-chat-left-text"></i> My Enquiries</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="profile.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-person-gear"></i> Institution Profile</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Quick Navigation</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="../track-request.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-search"></i> Track Any Request</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../index.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-globe"></i> Public Agency Site</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../login.html" class="sidebar-nav-link text-danger">
+              <span class="nav-icon-title"><i class="bi bi-box-arrow-left text-danger"></i> Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <small class="text-secondary">Logged in as:<br><strong class="text-white">Govt Higher Sec School</strong></small>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle sidebar">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <div>
+            <h5 class="page-title-heading fw-bold text-navy mb-0">My Requisitions</h5>
+            <small class="text-muted">Manage institutional staff bookings and track progress</small>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="../request-service.html" class="btn btn-agency-gold btn-sm">
+            <i class="bi bi-plus-lg me-1"></i> New Request
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="enterprise-card">
+          <div class="enterprise-card-header">
+            <div>
+              <h5 class="fw-bold text-navy mb-0">All Service Requests</h5>
+              <small class="text-muted">Real-time status tracking for your campus</small>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table-enterprise">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Service Requested</th>
+                  <th>Guards</th>
+                  <th>Housekeeping</th>
+                  <th>Shift</th>
+                  <th>Start Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="myRequestsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app-data.js"></script>
+  <script src="../js/app-engine.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tbody = document.getElementById('myRequestsTableBody');
+      if (tbody && window.ppsaEngine) {
+        const reqs = window.ppsaEngine.getRequests();
+        const myReqs = reqs.filter(r => r.organizationName.includes('School') || r.organizationName.includes('Government'));
+        tbody.innerHTML = myReqs.map(r => `
+          <tr>
+            <td><strong class="text-navy">${r.id}</strong></td>
+            <td>
+              <div class="fw-bold">${r.serviceName}</div>
+              <small class="text-muted">${r.duration}</small>
+            </td>
+            <td><span class="badge bg-light text-navy border">${r.securityGuards} Guards</span></td>
+            <td><span class="badge bg-light text-success border">${r.housekeepingStaff} Cleaners</span></td>
+            <td>${r.shift}</td>
+            <td>${r.startDate}</td>
+            <td><span class="badge-status status-${r.status.toLowerCase().replace(/\s+/g, '-')}">${r.status}</span></td>
+            <td>
+              <a href="../track-request.html?id=${r.id}" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-clock-history me-1"></i> Track
+              </a>
+            </td>
+          </tr>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

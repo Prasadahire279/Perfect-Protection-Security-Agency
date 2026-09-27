@@ -1,0 +1,169 @@
+/* ==========================================================================
+   PERFECT PROTECTION SECURITY AGENCY - RESPONSIVE & PRINT MEDIA STYLES
+   Final Year Project 2026 - Security & Housekeeping Staff Management System
+   ========================================================================== */
+
+/* Large Tablets & Small Laptops (max-width: 991px) */
+@media (max-width: 991.98px) {
+  .hero-title {
+    font-size: 2.35rem;
+  }
+  
+  .trust-indicators-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .how-it-works-timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Admin Sidebar Drawer on Tablet/Mobile */
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -280px;
+    z-index: 1060;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .admin-sidebar.show-sidebar {
+    left: 0;
+  }
+
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1055;
+  }
+
+  .sidebar-backdrop.show {
+    display: block;
+  }
+
+  .admin-topbar {
+    padding: 0 1rem;
+  }
+
+  .admin-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Mobile Devices (max-width: 767.98px) */
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .trust-indicators-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .how-it-works-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-progress-bar {
+    margin-bottom: 1.5rem;
+  }
+
+  .step-node-label {
+    display: none; /* Keep circle badges clean on compact mobile */
+  }
+
+  .tracking-stepper {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding-left: 1.5rem;
+  }
+
+  .tracking-stepper::before {
+    top: 10px;
+    bottom: 10px;
+    left: 35px;
+    width: 3px;
+    height: auto;
+  }
+
+  .tracking-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .tracking-step .step-title {
+    margin-top: 0;
+  }
+
+  .topbar-left .page-title-heading {
+    display: none;
+  }
+}
+
+/* Print Styles for Reports */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt;
+  }
+
+  .admin-sidebar,
+  .admin-topbar,
+  .btn,
+  .sidebar-toggle-btn,
+  .no-print {
+    display: none !important;
+  }
+
+  .admin-wrapper {
+    display: block !important;
+    background: transparent !important;
+  }
+
+  .admin-main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .admin-content {
+    padding: 0 !important;
+  }
+
+  .enterprise-card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .table-enterprise {
+    border: 1px solid #000 !important;
+  }
+
+  .table-enterprise th,
+  .table-enterprise td {
+    border: 1px solid #ddd !important;
+  }
+
+  .print-header {
+    display: block !important;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+  }
+}

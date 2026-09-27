@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Protection Security Agency | Security & Housekeeping Staff Management</title>
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Institutional Trust Bar -->
+  <div class="top-subbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <span><i class="bi bi-shield-check text-warning me-1"></i> Authorized Institutional Security & Workforce Contractor</span>
+        <span class="d-none d-md-inline text-secondary">|</span>
+        <span class="d-none d-md-inline"><i class="bi bi-clock-history me-1"></i> 24/7 Operations Command: 1800-202-6000</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="track-request.html"><i class="bi bi-search me-1"></i> Track Service Request</a>
+        <a href="login.html" class="fw-bold"><i class="bi bi-box-arrow-in-right me-1"></i> Portal Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="agency-navbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand brand-badge" href="index.html">
+          <div class="brand-shield-icon">
+            <i class="bi bi-shield-shaded"></i>
+          </div>
+          <div class="brand-title-wrap">
+            <span class="brand-main-title">Perfect Protection</span>
+            <span class="brand-sub-title">Security & Housekeeping Services</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#agencyNavDropdown" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="agencyNavDropdown">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <a href="login.html" class="btn btn-agency-outline">
+              <i class="bi bi-person-lock me-1"></i> Login
+            </a>
+            <a href="request-service.html" class="btn btn-agency-gold">
+              <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-pattern"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="hero-badge">
+            <i class="bi bi-award-fill"></i> Government & Institutional Staffing Partner
+          </div>
+          <h1 class="hero-title">
+            Reliable <span class="text-highlight">Security & Housekeeping</span> Services for Institutions
+          </h1>
+          <p class="hero-description">
+            Professional security and housekeeping staff for government schools, government offices, educational institutions, hospitals, commercial organizations and industrial facilities.
+          </p>
+          
+          <div class="d-flex flex-wrap gap-3">
+            <a href="request-service.html" class="btn btn-agency-gold btn-lg px-4 py-3">
+              <i class="bi bi-shield-lock-fill me-2"></i> Request Staff Now
+            </a>
+            <a href="services.html" class="btn btn-outline-light btn-lg px-4 py-3">
+              <i class="bi bi-grid-fill me-2"></i> Explore Services
+            </a>
+          </div>
+
+          <!-- Quick Track Form Inline -->
+          <div class="mt-4 p-3 rounded-3" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); max-width: 490px;">
+            <form id="quickTrackForm" class="d-flex gap-2">
+              <div class="input-group">
+                <span class="input-group-text bg-white border-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="quickTrackInput" class="form-control border-0" placeholder="Enter Request ID (e.g. REQ-2026-1001)" required>
+              </div>
+              <button type="submit" class="btn btn-warning fw-bold px-3">Track</button>
+            </form>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="trust-indicators-grid">
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="bi bi-person-check-fill"></i></div>
+              <div class="trust-text">
+                <h6>Trained Staff</h6>
+                <span>Police & background verified</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="bi bi-shield-check"></i></div>
+              <div class="trust-text">
+                <h6>Reliable Service</h6>
+                <span>Guaranteed shift coverage</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="bi bi-building-gear"></i></div>
+              <div class="trust-text">
+                <h6>Professional Mgmt</h6>
+                <span>Dedicated field supervisors</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="bi bi-headset"></i></div>
+              <div class="trust-text">
+                <h6>24/7 Support</h6>
+                <span>Rapid escalation team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Showcase Card -->
+        <div class="col-lg-5">
+          <div class="hero-visual-card">
+            <!-- Floating Trust Highlight -->
+            <div class="hero-stats-floating top-right">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                <div>
+                  <div class="fw-bold" style="font-size: 0.85rem;">100% PSARA & ESI</div>
+                  <small class="text-secondary">Statutory Compliant</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center py-4">
+              <div class="brand-shield-icon mx-auto mb-3" style="width: 72px; height: 72px; font-size: 2.2rem;">
+                <i class="bi bi-shield-lock"></i>
+              </div>
+              <h4 class="text-white mb-2">Institutional Workforce Hub</h4>
+              <p class="text-light opacity-75 small mb-4">
+                Disciplined deployment across 6 primary sectors with automated biometric roster tracking.
+              </p>
+
+              <!-- Live Mini Feed Card -->
+              <div class="text-start bg-navy p-3 rounded-3 border border-secondary border-opacity-25">
+                <div class="d-flex justify-content-between text-secondary small mb-2">
+                  <span>ACTIVE DEPLOYMENTS</span>
+                  <span class="text-warning fw-bold">Live Status</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+                  <span class="small text-light"><i class="bi bi-building me-2 text-warning"></i>Govt Secondary School</span>
+                  <span class="badge bg-success-subtle text-success small">4 Staff Active</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between py-2 border-bottom border-secondary border-opacity-25">
+                  <span class="small text-light"><i class="bi bi-bank me-2 text-warning"></i>District Collectorate</span>
+                  <span class="badge bg-success-subtle text-success small">8 Staff Active</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pt-2">
+                  <span class="small text-light"><i class="bi bi-hospital me-2 text-warning"></i>District Hospital</span>
+                  <span class="badge bg-success-subtle text-success small">10 Staff Active</span>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-2">
+                <a href="request-service.html" class="btn btn-warning w-100 fw-bold py-2">
+                  <i class="bi bi-send-fill me-1"></i> Submit Staffing Requirement
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <span class="section-tag"><i class="bi bi-shield-fill-check"></i> About Perfect Protection</span>
+          <h2 class="section-title">Government-Contract Professionalism & Disciplined Workforce</h2>
+          <p class="lead text-secondary">
+            Perfect Protection Security Agency is a specialized institutional staffing provider delivering rigorously vetted, uniform-disciplined security personnel and trained housekeeping teams.
+          </p>
+          <p class="text-muted">
+            We specialize in providing high-reliability workforce management solutions tailored for schools, universities, hospitals, collectorates, municipal offices, and industrial hubs. Our end-to-end supervision ensures absolute compliance with state labor regulations, safety protocols, and daily attendance integrity.
+          </p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3 bg-light border">
+                <h6 class="fw-bold text-navy mb-1"><i class="bi bi-check2-circle text-warning me-2"></i>Strict Background Check</h6>
+                <p class="small text-muted mb-0">Police verification and document scrutiny for every staff member.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3 bg-light border">
+                <h6 class="fw-bold text-navy mb-1"><i class="bi bi-check2-circle text-warning me-2"></i>Daily Field Supervision</h6>
+                <p class="small text-muted mb-0">Dedicated roaming officers conduct unannounced post checks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <a href="about.html" class="btn btn-agency-primary">
+              Learn More About Our Mission <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="row g-4">
+            <div class="col-sm-6">
+              <div class="agency-card p-4">
+                <div class="card-icon-header security">
+                  <i class="bi bi-shield-shaded"></i>
+                </div>
+                <h5 class="fw-bold text-navy">Security Guards</h5>
+                <p class="text-muted small">Trained in perimeter surveillance, visitor logging, access screening and physical gatekeeping.</p>
+                <a href="services.html" class="text-gold fw-bold small">Explore Security <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="agency-card p-4">
+                <div class="card-icon-header housekeeping">
+                  <i class="bi bi-stars"></i>
+                </div>
+                <h5 class="fw-bold text-navy">Housekeeping</h5>
+                <p class="text-muted small">Specialized in institutional deep cleaning, bio-waste disposal, and sanitized public washrooms.</p>
+                <a href="services.html" class="text-gold fw-bold small">Explore Housekeeping <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="agency-card p-4">
+                <div class="card-icon-header gold">
+                  <i class="bi bi-person-workspace"></i>
+                </div>
+                <h5 class="fw-bold text-navy">Supervisors</h5>
+                <p class="text-muted small">Experienced supervisors managing attendance registers, shift handovers, and emergency drills.</p>
+                <a href="services.html" class="text-gold fw-bold small">View Supervisory Roles <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="agency-card p-4">
+                <div class="card-icon-header security">
+                  <i class="bi bi-file-earmark-lock"></i>
+                </div>
+                <h5 class="fw-bold text-navy">Compliance & ESI</h5>
+                <p class="text-muted small">Full statutory compliance with Provident Fund, ESI medical insurance, and Minimum Wages Act.</p>
+                <a href="about.html" class="text-gold fw-bold small">Audit Standards <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Catalogue Highlights -->
+  <section class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="section-tag"><i class="bi bi-grid-fill"></i> Workforce Solutions</span>
+        <h2 class="section-title">Specialized Security & Housekeeping Services</h2>
+        <p class="section-subtitle">
+          Designed specifically for government offices, schools, colleges, healthcare centres, and industrial complexes.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Service Card 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="agency-card p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-header security mb-0">
+                <i class="bi bi-shield-shaded"></i>
+              </div>
+              <span class="service-type-badge badge-security">Security</span>
+            </div>
+            <h5 class="fw-bold text-navy mb-2">School Security Guard</h5>
+            <p class="text-muted small mb-4">
+              Disciplined gate vigilance, student entry/exit logging, and campus perimeter supervision.
+            </p>
+            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+              <a href="service-details.html?id=SRV-101" class="text-navy fw-bold small">Details</a>
+              <a href="request-service.html?service=SRV-101" class="btn btn-sm btn-agency-gold">Request</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="agency-card p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-header security mb-0">
+                <i class="bi bi-building-lock"></i>
+              </div>
+              <span class="service-type-badge badge-security">Security</span>
+            </div>
+            <h5 class="fw-bold text-navy mb-2">Govt Office Security</h5>
+            <p class="text-muted small mb-4">
+              Formal administrative gatekeeper, visitor badge management, and departmental crowd control.
+            </p>
+            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+              <a href="service-details.html?id=SRV-102" class="text-navy fw-bold small">Details</a>
+              <a href="request-service.html?service=SRV-102" class="btn btn-sm btn-agency-gold">Request</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="agency-card p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-header housekeeping mb-0">
+                <i class="bi bi-brush"></i>
+              </div>
+              <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+            </div>
+            <h5 class="fw-bold text-navy mb-2">Institutional Cleaning</h5>
+            <p class="text-muted small mb-4">
+              Mechanized floor scrubbing, sanitized restrooms, desk dusting, and classroom hygiene routines.
+            </p>
+            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+              <a href="service-details.html?id=SRV-201" class="text-navy fw-bold small">Details</a>
+              <a href="request-service.html?service=SRV-201" class="btn btn-sm btn-agency-gold">Request</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="agency-card p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-icon-header housekeeping mb-0">
+                <i class="bi bi-hospital"></i>
+              </div>
+              <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+            </div>
+            <h5 class="fw-bold text-navy mb-2">Hospital Sanitation</h5>
+            <p class="text-muted small mb-4">
+              NABH compliant infection control, yellow/red bag bio-waste segregation, and OT sterilization support.
+            </p>
+            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+              <a href="service-details.html?id=SRV-203" class="text-navy fw-bold small">Details</a>
+              <a href="request-service.html?service=SRV-203" class="btn btn-sm btn-agency-gold">Request</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="services.html" class="btn btn-agency-outline px-4 py-2">
+          View All 8 Specialized Service Packages <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries & Institutions Page Snippet -->
+  <section class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="section-tag"><i class="bi bi-buildings"></i> Sectors Served</span>
+        <h2 class="section-title">Serving Critical Institutions with Distinction</h2>
+        <p class="section-subtitle">
+          Tailored workforce deployments respecting the unique protocols of public and private organizations.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-3 border bg-light h-100">
+            <div class="fs-1 text-primary mb-2"><i class="bi bi-backpack4-fill"></i></div>
+            <h5 class="fw-bold text-navy">Government Schools</h5>
+            <p class="text-muted small">Child-safety oriented guards, female cleaning assistants, and visitor verification for academic safety.</p>
+            <a href="request-service.html" class="fw-bold text-gold small">Request School Staff <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-3 border bg-light h-100">
+            <div class="fs-1 text-primary mb-2"><i class="bi bi-building-fill"></i></div>
+            <h5 class="fw-bold text-navy">Government Offices</h5>
+            <p class="text-muted small">Security for collectorates, treasuries, municipal offices, file storage and public hearing chambers.</p>
+            <a href="request-service.html" class="fw-bold text-gold small">Request Office Staff <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-3 border bg-light h-100">
+            <div class="fs-1 text-primary mb-2"><i class="bi bi-hospital-fill"></i></div>
+            <h5 class="fw-bold text-navy">Hospitals & Healthcare</h5>
+            <p class="text-muted small">De-escalation trained security guards for casualty wards, combined with biohazard certified sanitation staff.</p>
+            <a href="request-service.html" class="fw-bold text-gold small">Request Healthcare Staff <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="text-center mb-4">
+        <span class="section-tag"><i class="bi bi-arrow-repeat"></i> Clear Workflow</span>
+        <h2 class="section-title">How It Works: 4-Step Seamless Onboarding</h2>
+        <p class="section-subtitle">
+          From requirement submission to verified on-site workforce deployment.
+        </p>
+      </div>
+
+      <div class="how-it-works-timeline">
+        <div class="timeline-step-card">
+          <div class="step-number-badge">1</div>
+          <h5 class="fw-bold text-navy">Submit Requirement</h5>
+          <p class="text-muted small mb-0">Fill our multi-step service request form with organization details, required staff counts, and shift preferences.</p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-number-badge">2</div>
+          <h5 class="fw-bold text-navy">Verification & Review</h5>
+          <p class="text-muted small mb-0">Our operations team reviews facility requirements, conducts site assessment, and plans the deployment roster.</p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-number-badge">3</div>
+          <h5 class="fw-bold text-navy">Staff Assignment</h5>
+          <p class="text-muted small mb-0">Admin assigns verified security guards and housekeeping personnel. Assignment IDs are issued.</p>
+        </div>
+
+        <div class="timeline-step-card">
+          <div class="step-number-badge">4</div>
+          <h5 class="fw-bold text-navy">Service Begins</h5>
+          <p class="text-muted small mb-0">Personnel report on site in full uniform. Daily attendance and supervisor audits ensure peak discipline.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="request-service.html" class="btn btn-agency-gold btn-lg px-5">
+          <i class="bi bi-clipboard2-check me-2"></i> Start Service Request
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-5 bg-navy text-white text-center">
+    <div class="container py-3">
+      <h2 class="text-white fw-bold mb-3">Ready to Secure and Maintain Your Facility?</h2>
+      <p class="text-light opacity-75 mb-4 mx-auto" style="max-width: 600px;">
+        Join government schools, administrative offices, and premier institutions trusting Perfect Protection Security Agency.
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="request-service.html" class="btn btn-agency-gold btn-lg">Request Staffing Now</a>
+        <a href="contact.html" class="btn btn-outline-light btn-lg">Speak with an Officer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="agency-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <h4>PERFECT PROTECTION</h4>
+            <span class="footer-sub">SECURITY & HOUSEKEEPING SERVICES</span>
+            <p class="text-secondary small">
+              Professional security and housekeeping staff management system for government schools, government offices, educational institutions, hospitals, and commercial organizations.
+            </p>
+            <div class="d-flex gap-3 text-secondary fs-5 mt-3">
+              <i class="bi bi-shield-check text-warning"></i>
+              <i class="bi bi-award text-warning"></i>
+              <i class="bi bi-patch-check text-warning"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services Catalogue</a></li>
+            <li><a href="industries.html">Institutions Served</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="track-request.html">Track Request</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="footer-heading">Services</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">School Security Guard</a></li>
+            <li><a href="services.html">Government Office Security</a></li>
+            <li><a href="services.html">Hospital Healthcare Security</a></li>
+            <li><a href="services.html">Institutional Housekeeping</a></li>
+            <li><a href="services.html">Clinical Sanitation & Waste</a></li>
+            <li><a href="services.html">Facility Support Staff</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5 class="footer-heading">Contact Agency</h5>
+          <ul class="footer-links text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill text-warning me-2"></i> Plot 45, Administrative Enclave, Capital City - 400001</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i> +91 (022) 2890-4400</li>
+            <li class="mb-2"><i class="bi bi-headset text-warning me-2"></i> 24/7 Helpline: 1800-202-6000</li>
+            <li class="mb-2"><i class="bi bi-envelope-fill text-warning me-2"></i> info@perfectprotection.agency</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+        <div>
+          © 2026 Perfect Protection Security Agency. All Rights Reserved. (Final Year Project)
+        </div>
+        <div class="d-flex gap-3">
+          <a href="login.html" class="text-secondary small">Staff Login</a>
+          <span class="text-secondary">•</span>
+          <a href="admin/dashboard.html" class="text-secondary small">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app-data.js"></script>
+  <script src="js/app-engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

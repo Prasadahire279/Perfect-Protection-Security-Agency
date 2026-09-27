@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Command Dashboard | Perfect Protection Security Agency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body id="adminDashboardMetrics">
+
+  <div class="admin-wrapper">
+    
+    <!-- Admin Professional Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="bi bi-shield-shaded"></i></div>
+        <div>
+          <div class="brand-title">Perfect Protection</div>
+          <div class="brand-role">Executive Command</div>
+        </div>
+      </div>
+
+      <div class="sidebar-menu-wrapper">
+        <div class="sidebar-category">Overview</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link active">
+              <span class="nav-icon-title"><i class="bi bi-speedometer2"></i> Dashboard</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Management</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="organizations.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-buildings"></i> Organizations</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="security-staff.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-shield-lock"></i> Security Staff</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="housekeeping-staff.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-stars"></i> Housekeeping Staff</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="services.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-grid"></i> Services Catalogue</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Operations</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="requests.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-inbox-fill text-warning"></i> Service Requests</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="assignments.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-person-check-fill"></i> Staff Assignments</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="attendance.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-calendar-check"></i> Staff Attendance</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Communication</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="enquiries.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-chat-square-dots"></i> Enquiries Desk</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Reports & Analytics</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="reports.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-bar-chart-line"></i> Master Reports</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">System</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="settings.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-gear"></i> System Settings</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../login.html" class="sidebar-nav-link text-danger">
+              <span class="nav-icon-title"><i class="bi bi-box-arrow-left text-danger"></i> Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <small class="text-secondary">Administrator:<br><strong class="text-white">Agency Central Command</strong></small>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="admin-main">
+      
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle sidebar">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <div>
+            <h5 class="page-title-heading fw-bold text-navy mb-0">Operations Command Center</h5>
+            <small class="text-muted">Perfect Protection Security Agency • Live Operations Monitoring</small>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Notification Dropdown -->
+          <div class="dropdown">
+            <button class="notif-badge-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-bell-fill"></i>
+              <span class="notif-count" id="notifBadgeCount">3</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg p-0" style="width: 320px;" id="notifDropdownList">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Quick Navigation to Public Website -->
+          <a href="../index.html" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex" target="_blank">
+            <i class="bi bi-globe me-1"></i> Public Site
+          </a>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-light rounded-circle p-2" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-fill-gear fs-5 text-navy"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><h6 class="dropdown-header">Chief Operations Officer</h6></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear me-2"></i>Settings & Reset</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="../login.html"><i class="bi bi-box-arrow-left me-2"></i>Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="admin-content">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-custom">
+          <a href="dashboard.html">Admin</a>
+          <span>/</span>
+          <span class="text-dark fw-bold">Executive Dashboard</span>
+        </div>
+
+        <!-- 8 KPI Metrics Cards -->
+        <div class="row g-3 mb-4">
+          <!-- 1. Total Organizations -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card gold">
+              <div class="kpi-header">
+                <span class="kpi-title">Total Organizations</span>
+                <div class="kpi-icon"><i class="bi bi-buildings text-warning"></i></div>
+              </div>
+              <div class="kpi-value" id="kpiTotalOrgs">6</div>
+              <div class="kpi-footer"><i class="bi bi-arrow-up-right text-success"></i> Government & Corporate</div>
+            </div>
+          </div>
+
+          <!-- 2. Security Staff -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Security Personnel</span>
+                <div class="kpi-icon"><i class="bi bi-shield-shaded text-navy"></i></div>
+              </div>
+              <div class="kpi-value" id="kpiSecStaff">8</div>
+              <div class="kpi-footer"><i class="bi bi-person-check text-navy"></i> Guards & Supervisors</div>
+            </div>
+          </div>
+
+          <!-- 3. Housekeeping Staff -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card success">
+              <div class="kpi-header">
+                <span class="kpi-title">Housekeeping Staff</span>
+                <div class="kpi-icon"><i class="bi bi-stars text-success"></i></div>
+              </div>
+              <div class="kpi-value text-success" id="kpiHkStaff">7</div>
+              <div class="kpi-footer"><i class="bi bi-brush text-success"></i> Cleaning & Sanitation</div>
+            </div>
+          </div>
+
+          <!-- 4. Active Assignments -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card info">
+              <div class="kpi-header">
+                <span class="kpi-title">Active Assignments</span>
+                <div class="kpi-icon"><i class="bi bi-person-check-fill text-info"></i></div>
+              </div>
+              <div class="kpi-value text-info" id="kpiActiveAssignments">4</div>
+              <div class="kpi-footer"><i class="bi bi-geo-alt text-info"></i> Currently deployed on-site</div>
+            </div>
+          </div>
+
+          <!-- 5. Pending Requests -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card warning">
+              <div class="kpi-header">
+                <span class="kpi-title">Pending Requests</span>
+                <div class="kpi-icon"><i class="bi bi-inbox-fill text-warning"></i></div>
+              </div>
+              <div class="kpi-value text-warning" id="kpiPendingRequests">2</div>
+              <div class="kpi-footer"><i class="bi bi-hourglass-top text-warning"></i> Requires approval/assignment</div>
+            </div>
+          </div>
+
+          <!-- 6. Active Services -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Active Services</span>
+                <div class="kpi-icon"><i class="bi bi-grid text-secondary"></i></div>
+              </div>
+              <div class="kpi-value" id="kpiActiveServices">8</div>
+              <div class="kpi-footer"><i class="bi bi-check-circle text-secondary"></i> In catalogue</div>
+            </div>
+          </div>
+
+          <!-- 7. Present Today -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card success">
+              <div class="kpi-header">
+                <span class="kpi-title">Present Staff Today</span>
+                <div class="kpi-icon"><i class="bi bi-calendar-check text-success"></i></div>
+              </div>
+              <div class="kpi-value text-success" id="kpiAttendanceToday">88%</div>
+              <div class="kpi-footer"><i class="bi bi-check2-all text-success"></i> Shift verified</div>
+            </div>
+          </div>
+
+          <!-- 8. Pending Enquiries -->
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card info">
+              <div class="kpi-header">
+                <span class="kpi-title">Pending Enquiries</span>
+                <div class="kpi-icon"><i class="bi bi-chat-dots text-info"></i></div>
+              </div>
+              <div class="kpi-value text-info" id="kpiPendingEnquiries">1</div>
+              <div class="kpi-footer"><i class="bi bi-envelope text-info"></i> Unanswered messages</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Chart.js Analytical Graphs -->
+        <div class="row g-4 mb-4">
+          <!-- 1. Staff Distribution -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="enterprise-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h6 class="fw-bold text-navy mb-0">Staff Distribution</h6>
+                <span class="badge bg-light text-dark border">Security vs HK</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartStaffDistribution"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Request Status Funnel -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="enterprise-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h6 class="fw-bold text-navy mb-0">Request Status</h6>
+                <span class="badge bg-light text-dark border">Pipeline</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartRequestStatus"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Attendance Overview -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="enterprise-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h6 class="fw-bold text-navy mb-0">Attendance Today</h6>
+                <span class="badge bg-light text-dark border">Daily Roster</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartAttendanceOverview"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Service Demand Breakdown -->
+          <div class="col-lg-6 col-xl-3">
+            <div class="enterprise-card p-3 h-100">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h6 class="fw-bold text-navy mb-0">Service Demand</h6>
+                <span class="badge bg-light text-dark border">By Category</span>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartServiceDemand"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Service Requests Table -->
+        <div class="enterprise-card">
+          <div class="enterprise-card-header">
+            <div>
+              <h5 class="fw-bold text-navy mb-0">Recent Service Requests</h5>
+              <small class="text-muted">Live incoming client requirements requiring review and assignment</small>
+            </div>
+            <a href="requests.html" class="btn btn-sm btn-agency-primary">View All Requests</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table-enterprise">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Organization</th>
+                  <th>Service</th>
+                  <th>Required Staff</th>
+                  <th>Shift</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dashboardRecentRequestsTable">
+                <!-- Dynamically populated via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../js/app-data.js"></script>
+  <script src="../js/app-engine.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Request Management | Admin Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="bi bi-shield-shaded"></i></div>
+        <div>
+          <div class="brand-title">Perfect Protection</div>
+          <div class="brand-role">Executive Command</div>
+        </div>
+      </div>
+
+      <div class="sidebar-menu-wrapper">
+        <div class="sidebar-category">Overview</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-speedometer2"></i> Dashboard</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Management</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="organizations.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-buildings"></i> Organizations</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="security-staff.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-shield-lock"></i> Security Staff</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="housekeeping-staff.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-stars"></i> Housekeeping Staff</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="services.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-grid"></i> Services Catalogue</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Operations</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="requests.html" class="sidebar-nav-link active">
+              <span class="nav-icon-title"><i class="bi bi-inbox-fill text-warning"></i> Service Requests</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="assignments.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-person-check-fill"></i> Staff Assignments</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="attendance.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-calendar-check"></i> Staff Attendance</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Communication</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="enquiries.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-chat-square-dots"></i> Enquiries Desk</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Reports & Analytics</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="reports.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-bar-chart-line"></i> Master Reports</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">System</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="settings.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-gear"></i> System Settings</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../login.html" class="sidebar-nav-link text-danger">
+              <span class="nav-icon-title"><i class="bi bi-box-arrow-left text-danger"></i> Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn"><i class="bi bi-list fs-5"></i></button>
+          <div>
+            <h5 class="page-title-heading fw-bold text-navy mb-0">Service Request Workflow Engine</h5>
+            <small class="text-muted">Lifecycle: Pending → Under Review → Approved → Staff Assigned → Active → Completed</small>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <a href="../request-service.html" class="btn btn-agency-gold btn-sm" target="_blank">
+            <i class="bi bi-plus-circle me-1"></i> Add Requisition
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="breadcrumb-custom">
+          <a href="dashboard.html">Admin</a>
+          <span>/</span>
+          <span class="text-dark fw-bold">Service Requests</span>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="enterprise-card p-3 mb-4">
+          <div class="row g-2 align-items-center">
+            <div class="col-md-6">
+              <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="searchRequestInput" class="form-control" placeholder="Search by Request ID, organization name or service...">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" id="filterRequestStatus">
+                <option value="All">All Request Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Under Review">Under Review</option>
+                <option value="Approved">Approved</option>
+                <option value="Staff Assigned">Staff Assigned</option>
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Requests Table -->
+        <div class="enterprise-card">
+          <div class="table-responsive">
+            <table class="table-enterprise" id="requestsManagementTable">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Organization & Contact</th>
+                  <th>Service Package</th>
+                  <th>Staff Required</th>
+                  <th>Shift</th>
+                  <th>Start Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Request Workflow & Details Modal -->
+  <div class="modal fade" id="requestWorkflowModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title fw-bold text-navy" id="reqModalId">REQ-2026-XXXX</h5>
+            <small class="text-muted">Client Requisition Details & Workflow Controls</small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          
+          <div class="table-responsive mb-3">
+            <table class="table table-bordered small">
+              <tbody>
+                <tr>
+                  <th class="bg-light text-navy" style="width: 25%;">Organization:</th>
+                  <td id="reqModalOrg" class="fw-bold">--</td>
+                  <th class="bg-light text-navy" style="width: 25%;">Current Status:</th>
+                  <td><span id="reqModalCurrentStatus" class="badge-status status-pending">--</span></td>
+                </tr>
+                <tr>
+                  <th class="bg-light text-navy">Service Package:</th>
+                  <td id="reqModalService">--</td>
+                  <th class="bg-light text-navy">Shift Timing:</th>
+                  <td id="reqModalShift">--</td>
+                </tr>
+                <tr>
+                  <th class="bg-light text-navy">Contact Person:</th>
+                  <td id="reqModalContact">--</td>
+                  <th class="bg-light text-navy">Start Date:</th>
+                  <td><span id="reqModalStartDate">--</span> (<span id="reqModalDuration">--</span>)</td>
+                </tr>
+                <tr>
+                  <th class="bg-light text-navy">Campus Address:</th>
+                  <td colspan="3" id="reqModalAddress">--</td>
+                </tr>
+                <tr>
+                  <th class="bg-light text-navy">Staff Breakdown:</th>
+                  <td colspan="3" id="reqModalStaff" class="fw-bold text-navy">--</td>
+                </tr>
+                <tr>
+                  <th class="bg-light text-navy">Special Notes:</th>
+                  <td colspan="3" id="reqModalNotes">--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Dynamic Workflow Action Buttons Injected Here -->
+          <div class="p-3 bg-light rounded-3 border">
+            <strong class="text-navy d-block mb-2"><i class="bi bi-lightning-charge-fill text-warning me-1"></i>Advance Lifecycle Action:</strong>
+            <div class="d-flex flex-wrap gap-2" id="reqWorkflowActionButtons">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app-data.js"></script>
+  <script src="../js/app-engine.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

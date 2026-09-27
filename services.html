@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Catalogue | Perfect Protection Security Agency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-subbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span><i class="bi bi-shield-check text-warning me-1"></i> Authorized Institutional Security & Workforce Contractor</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="track-request.html"><i class="bi bi-search me-1"></i> Track Request</a>
+        <a href="login.html" class="fw-bold"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="agency-navbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand brand-badge" href="index.html">
+          <div class="brand-shield-icon"><i class="bi bi-shield-shaded"></i></div>
+          <div class="brand-title-wrap">
+            <span class="brand-main-title">Perfect Protection</span>
+            <span class="brand-sub-title">Security & Housekeeping Services</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#agencyNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="agencyNavDropdown">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <a href="login.html" class="btn btn-agency-outline">Login</a>
+            <a href="request-service.html" class="btn btn-agency-gold">Request Staff</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="py-5 bg-navy text-white text-center">
+    <div class="container py-3">
+      <span class="section-tag bg-warning bg-opacity-25 text-warning border-warning border-opacity-50">Workforce Solutions</span>
+      <h1 class="display-5 fw-bold text-white mb-3">Institutional Service Catalogue</h1>
+      <p class="lead text-light opacity-75 max-width-600 mx-auto">
+        Certified security guards, patrolling supervisors, and clinical-grade housekeeping teams for your campus.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Filter Tabs -->
+  <section class="py-4 bg-white border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center gap-2" id="serviceFilterGroup">
+        <button class="btn btn-agency-primary active" data-filter="all">All Services (8)</button>
+        <button class="btn btn-agency-outline" data-filter="security">Security Services (4)</button>
+        <button class="btn btn-agency-outline" data-filter="housekeeping">Housekeeping Services (4)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-5 bg-light">
+    <div class="container py-3">
+      
+      <!-- Security Heading -->
+      <div class="service-category-section" id="securityCategorySection">
+        <div class="d-flex align-items-center gap-2 mb-4">
+          <div class="card-icon-header security mb-0" style="width: 40px; height: 40px; font-size: 1.2rem;">
+            <i class="bi bi-shield-shaded"></i>
+          </div>
+          <div>
+            <h3 class="fw-bold text-navy mb-0">Security Services</h3>
+            <small class="text-muted">Rigorous guarding, visitor registration, access control and perimeter surveillance</small>
+          </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+          <!-- SRV-101 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="security">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-security">Security Services</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">School Security Guard Service</h4>
+              <p class="text-muted small mb-3">
+                Disciplined uniformed security staff trained for school main-gate vigilance, student entry/exit logging, visitor screening and boundary protection.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> Morning, Full Day</span>
+                  <span><strong>Min Requirement:</strong> 2 Guards</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> 6 Months to 3 Years</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-101" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-101" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-102 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="security">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-security">Security Services</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Government Office Security</h4>
+              <p class="text-muted small mb-3">
+                Institutional security team for government administrative complexes, ministry offices, collectorates and municipal boards.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> Morning, Full Day, Rotational</span>
+                  <span><strong>Min Requirement:</strong> 4 Staff</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> Annual Government Tender / Contract</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-102" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-102" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-103 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="security">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-security">Security Services</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Hospital & Healthcare Security</h4>
+              <p class="text-muted small mb-3">
+                Specialized 24/7 security for emergency wards, casualty zones, ICU corridors, and doctor protection squads with conflict de-escalation skills.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> 24/7 Rotational (3 Shifts)</span>
+                  <span><strong>Min Requirement:</strong> 6 Guards</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> 12 Months to 36 Months</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-103" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-103" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-104 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="security">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-security">Security Services</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Factory & Industrial Security</h4>
+              <p class="text-muted small mb-3">
+                Tough industrial security personnel skilled in material inward/outward registers, weighbridge checking, and raw material theft prevention.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> 12-Hr Shift, Night, Rotational</span>
+                  <span><strong>Min Requirement:</strong> 4 Guards</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> 12 Months Contract</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-104" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-104" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Housekeeping Heading -->
+      <div class="service-category-section" id="housekeepingCategorySection">
+        <div class="d-flex align-items-center gap-2 mb-4">
+          <div class="card-icon-header housekeeping mb-0" style="width: 40px; height: 40px; font-size: 1.2rem;">
+            <i class="bi bi-stars"></i>
+          </div>
+          <div>
+            <h3 class="fw-bold text-navy mb-0">Housekeeping & Facility Hygiene Services</h3>
+            <small class="text-muted">Mechanized cleaning, sanitized public restrooms, waste segregation and clinical hygiene</small>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- SRV-201 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="housekeeping">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Institutional Housekeeping & Cleaning</h4>
+              <p class="text-muted small mb-3">
+                Comprehensive mechanized floor scrubbing, dusting, restroom sanitization and environmental upkeep for schools & educational campuses.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> Morning, Evening</span>
+                  <span><strong>Min Requirement:</strong> 2 Cleaners</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> Annual Maintenance</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-201" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-201" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-202 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="housekeeping">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Government Office Deep Cleaning & Support</h4>
+              <p class="text-muted small mb-3">
+                Professional cleaning of administrative desks, conference rooms, record storage halls, and high-footfall public lobbies.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> Morning, Evening, Full Day</span>
+                  <span><strong>Min Requirement:</strong> 3 Staff</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> Contract Basis</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-202" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-202" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-203 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="housekeeping">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Hospital Clinical Sanitation & Waste Mgmt</h4>
+              <p class="text-muted small mb-3">
+                Infection control hygiene squad trained in NABH healthcare protocols, yellow/red/blue bag bio-medical disposal and OT sterilizing support.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> 24/7 (3 Shifts)</span>
+                  <span><strong>Min Requirement:</strong> 6 Personnel</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> 12 to 24 Months</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-203" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-203" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- SRV-204 -->
+          <div class="col-md-6 col-lg-6 service-item" data-category="housekeeping">
+            <div class="agency-card p-4">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <span class="service-type-badge badge-housekeeping">Housekeeping</span>
+                <span class="badge bg-success-subtle text-success small"><i class="bi bi-check-circle me-1"></i> Available Immediate</span>
+              </div>
+              <h4 class="fw-bold text-navy mb-2">Facility Support & Maintenance Assistance</h4>
+              <p class="text-muted small mb-3">
+                Handyman support, campus gardening, water pump operation, furniture shifting and general institution utility care.
+              </p>
+              <div class="bg-light p-3 rounded-3 mb-3 border">
+                <div class="d-flex justify-content-between small text-muted mb-1">
+                  <span><strong>Available Shifts:</strong> General Day Shift (9 AM - 6 PM)</span>
+                  <span><strong>Min Requirement:</strong> 2 Staff</span>
+                </div>
+                <div class="small text-muted"><strong>Contract:</strong> Annual Maintenance</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
+                <a href="service-details.html?id=SRV-204" class="btn btn-sm btn-outline-secondary">
+                  <i class="bi bi-info-circle me-1"></i> View Full Details
+                </a>
+                <a href="request-service.html?service=SRV-204" class="btn btn-sm btn-agency-gold">
+                  <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="agency-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <h4>PERFECT PROTECTION</h4>
+            <span class="footer-sub">SECURITY & HOUSEKEEPING SERVICES</span>
+            <p class="text-secondary small">
+              Professional security and housekeeping staff management system for government schools, government offices, educational institutions, hospitals, and commercial organizations.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <h5 class="footer-heading">Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="industries.html">Industries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="footer-heading">Categories</h5>
+          <ul class="footer-links">
+            <li><a href="services.html">Security Staffing</a></li>
+            <li><a href="services.html">Housekeeping Staffing</a></li>
+            <li><a href="services.html">Supervisory Teams</a></li>
+            <li><a href="services.html">Integrated Solutions</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h5 class="footer-heading">Inquiries</h5>
+          <ul class="footer-links text-secondary small">
+            <li><i class="bi bi-telephone text-warning me-2"></i> +91 (022) 2890-4400</li>
+            <li><i class="bi bi-envelope text-warning me-2"></i> info@perfectprotection.agency</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        © 2026 Perfect Protection Security Agency. All Rights Reserved. (Final Year Project)
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app-data.js"></script>
+  <script src="js/app-engine.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Simple Category Filtering
+    document.querySelectorAll('#serviceFilterGroup button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#serviceFilterGroup button').forEach(b => {
+          b.classList.remove('btn-agency-primary', 'active');
+          b.classList.add('btn-agency-outline');
+        });
+        btn.classList.remove('btn-agency-outline');
+        btn.classList.add('btn-agency-primary', 'active');
+
+        const filter = btn.getAttribute('data-filter');
+        const secSec = document.getElementById('securityCategorySection');
+        const hkSec = document.getElementById('housekeepingCategorySection');
+
+        if (filter === 'all') {
+          secSec.style.display = 'block';
+          hkSec.style.display = 'block';
+        } else if (filter === 'security') {
+          secSec.style.display = 'block';
+          hkSec.style.display = 'none';
+        } else if (filter === 'housekeeping') {
+          secSec.style.display = 'none';
+          hkSec.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

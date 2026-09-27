@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | Perfect Protection Security Agency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body id="customerDashboardWrapper">
+
+  <div class="admin-wrapper">
+    
+    <!-- Customer Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="bi bi-shield-shaded"></i></div>
+        <div>
+          <div class="brand-title">Perfect Protection</div>
+          <div class="brand-role">Client Institution Portal</div>
+        </div>
+      </div>
+
+      <div class="sidebar-menu-wrapper">
+        <div class="sidebar-category">Main Menu</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link active">
+              <span class="nav-icon-title"><i class="bi bi-speedometer2"></i> Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="my-requests.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-card-checklist"></i> My Requests</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../request-service.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-plus-circle text-warning"></i> New Staff Request</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="my-enquiries.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-chat-left-text"></i> My Enquiries</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="profile.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-person-gear"></i> Institution Profile</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="sidebar-category">Quick Navigation</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <a href="../track-request.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-search"></i> Track Any Request</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../index.html" class="sidebar-nav-link">
+              <span class="nav-icon-title"><i class="bi bi-globe"></i> Public Agency Site</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="../login.html" class="sidebar-nav-link text-danger">
+              <span class="nav-icon-title"><i class="bi bi-box-arrow-left text-danger"></i> Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <small class="text-secondary">Logged in as:<br><strong class="text-white">Govt Higher Sec School</strong></small>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="admin-main">
+      
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle sidebar">
+            <i class="bi bi-list fs-5"></i>
+          </button>
+          <div>
+            <h5 class="page-title-heading fw-bold text-navy mb-0">Institution Overview</h5>
+            <small class="text-muted">Welcome, Dr. Rajesh Sen (Principal)</small>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="../request-service.html" class="btn btn-agency-gold btn-sm d-none d-sm-inline-flex">
+            <i class="bi bi-plus-lg me-1"></i> Request Staff
+          </a>
+          <div class="dropdown">
+            <button class="btn btn-light rounded-circle p-2" type="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle fs-5 text-navy"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li><a class="dropdown-item" href="profile.html">Institution Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="../login.html">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="admin-content">
+        
+        <!-- Metric KPI Cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card success">
+              <div class="kpi-header">
+                <span class="kpi-title">Active Deployments</span>
+                <div class="kpi-icon"><i class="bi bi-shield-check text-success"></i></div>
+              </div>
+              <div class="kpi-value text-success" id="custActiveReqs">1</div>
+              <div class="kpi-footer"><i class="bi bi-check2-circle text-success"></i> Deployed on-premise</div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card warning">
+              <div class="kpi-header">
+                <span class="kpi-title">Pending Requests</span>
+                <div class="kpi-icon"><i class="bi bi-clock-history text-warning"></i></div>
+              </div>
+              <div class="kpi-value text-warning" id="custPendingReqs">1</div>
+              <div class="kpi-footer"><i class="bi bi-hourglass-split text-warning"></i> Awaiting audit / review</div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card info">
+              <div class="kpi-header">
+                <span class="kpi-title">Approved Requests</span>
+                <div class="kpi-icon"><i class="bi bi-award text-info"></i></div>
+              </div>
+              <div class="kpi-value text-info" id="custApprovedReqs">1</div>
+              <div class="kpi-footer"><i class="bi bi-check text-info"></i> Staff assignment ready</div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-3">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Completed Services</span>
+                <div class="kpi-icon"><i class="bi bi-flag text-secondary"></i></div>
+              </div>
+              <div class="kpi-value text-secondary" id="custCompletedReqs">0</div>
+              <div class="kpi-footer"><i class="bi bi-archive"></i> Past service contracts</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions Row -->
+        <div class="enterprise-card p-3 mb-4 bg-white">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div>
+              <strong class="text-navy">Quick Operational Actions:</strong>
+              <span class="text-muted small ms-2">Direct shortcuts for institutional managers</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="../request-service.html" class="btn btn-agency-gold btn-sm">
+                <i class="bi bi-person-plus-fill me-1"></i> Request Staff
+              </a>
+              <a href="../contact.html" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-chat-left-dots me-1"></i> Submit Enquiry
+              </a>
+              <a href="my-requests.html" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-list-task me-1"></i> View Requests
+              </a>
+              <a href="profile.html" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-gear me-1"></i> Update Profile
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Requests Section -->
+        <div class="enterprise-card mb-4">
+          <div class="enterprise-card-header">
+            <div>
+              <h5 class="fw-bold text-navy mb-0">Recent Staffing Requisitions</h5>
+              <small class="text-muted">Live status of your submitted service requests</small>
+            </div>
+            <a href="my-requests.html" class="btn btn-sm btn-outline-primary">View All</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table-enterprise">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>Service</th>
+                  <th>Staff</th>
+                  <th>Shift</th>
+                  <th>Request Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="customerRecentRequestsTable">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Enquiries Section -->
+        <div class="enterprise-card">
+          <div class="enterprise-card-header">
+            <div>
+              <h5 class="fw-bold text-navy mb-0">Recent Support Enquiries</h5>
+              <small class="text-muted">Official communications and responses from agency command</small>
+            </div>
+            <a href="my-enquiries.html" class="btn btn-sm btn-outline-primary">View All</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table-enterprise">
+              <thead>
+                <tr>
+                  <th>Enquiry ID</th>
+                  <th>Service / Subject</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="customerRecentEnquiriesTable">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app-data.js"></script>
+  <script src="../js/app-engine.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

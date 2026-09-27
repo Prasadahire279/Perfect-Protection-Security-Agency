@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Service Request | Perfect Protection Security Agency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-subbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span><i class="bi bi-shield-check text-warning me-1"></i> Authorized Institutional Security & Workforce Contractor</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="track-request.html" class="text-warning"><i class="bi bi-search me-1"></i> Track Request</a>
+        <a href="login.html" class="fw-bold"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="agency-navbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand brand-badge" href="index.html">
+          <div class="brand-shield-icon"><i class="bi bi-shield-shaded"></i></div>
+          <div class="brand-title-wrap">
+            <span class="brand-main-title">Perfect Protection</span>
+            <span class="brand-sub-title">Security & Housekeeping Services</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#agencyNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="agencyNavDropdown">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <a href="login.html" class="btn btn-agency-outline">Login</a>
+            <a href="request-service.html" class="btn btn-agency-gold">Request Staff</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="py-4 bg-navy text-white text-center">
+    <div class="container py-2">
+      <span class="section-tag bg-warning bg-opacity-25 text-warning border-warning border-opacity-50">Live Status Tracker</span>
+      <h1 class="h2 fw-bold text-white mb-2">Track Your Service Request</h1>
+      <p class="small text-light opacity-75 max-width-600 mx-auto mb-0">
+        Enter your official Request ID to view real-time stage progression and staff assignment details.
+      </p>
+    </div>
+  </section>
+
+  <!-- Search Input Area -->
+  <section class="py-4 bg-white border-bottom">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <form id="trackSearchForm" class="d-flex gap-2">
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-search text-muted"></i></span>
+              <input type="text" id="trackInputId" class="form-control" placeholder="Enter Request ID (e.g. REQ-2026-1001, REQ-2026-1002)" required>
+            </div>
+            <button type="submit" class="btn btn-agency-gold px-4 fw-bold">Track</button>
+          </form>
+          <div class="text-center mt-2 small text-muted">
+            Try sample IDs: 
+            <a href="track-request.html?id=REQ-2026-1001" class="text-navy fw-bold me-2">REQ-2026-1001</a>
+            <a href="track-request.html?id=REQ-2026-1002" class="text-navy fw-bold me-2">REQ-2026-1002</a>
+            <a href="track-request.html?id=REQ-2026-1004" class="text-navy fw-bold">REQ-2026-1004</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracking Details Result Section -->
+  <section class="py-5 bg-light" id="trackResultsSection">
+    <div class="container py-2">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+          <!-- Card -->
+          <div class="agency-card p-4 p-md-5" id="trackCard">
+            
+            <div class="d-flex flex-wrap align-items-center justify-content-between pb-3 mb-4 border-bottom">
+              <div>
+                <span class="text-muted small">Tracking Request ID:</span>
+                <h3 class="fw-bold text-navy mb-0" id="trReqIdDisplay">REQ-2026-XXXX</h3>
+              </div>
+              <div class="mt-2 mt-md-0">
+                <span class="badge-status status-active" id="trCurrentStatusBadge">Under Review</span>
+              </div>
+            </div>
+
+            <!-- Visual 6-Stage Timeline Stepper -->
+            <!-- Submitted → Under Review → Approved → Staff Assigned → Service Active → Completed -->
+            <div class="tracking-stepper" id="trackingStepperContainer">
+              <div class="tracking-step" id="stepNode-submitted">
+                <div class="step-dot"><i class="bi bi-file-earmark-check"></i></div>
+                <span class="step-title">Submitted</span>
+              </div>
+
+              <div class="tracking-step" id="stepNode-review">
+                <div class="step-dot"><i class="bi bi-search"></i></div>
+                <span class="step-title">Under Review</span>
+              </div>
+
+              <div class="tracking-step" id="stepNode-approved">
+                <div class="step-dot"><i class="bi bi-check2-circle"></i></div>
+                <span class="step-title">Approved</span>
+              </div>
+
+              <div class="tracking-step" id="stepNode-assigned">
+                <div class="step-dot"><i class="bi bi-person-check"></i></div>
+                <span class="step-title">Staff Assigned</span>
+              </div>
+
+              <div class="tracking-step" id="stepNode-active">
+                <div class="step-dot"><i class="bi bi-play-circle"></i></div>
+                <span class="step-title">Service Active</span>
+              </div>
+
+              <div class="tracking-step" id="stepNode-completed">
+                <div class="step-dot"><i class="bi bi-flag-fill"></i></div>
+                <span class="step-title">Completed</span>
+              </div>
+            </div>
+
+            <!-- Request Information Table -->
+            <div class="table-responsive my-4">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th class="bg-light text-navy" style="width: 25%;">Organization:</th>
+                    <td id="trOrgName" class="fw-bold">--</td>
+                    <th class="bg-light text-navy" style="width: 25%;">Service:</th>
+                    <td id="trServiceName">--</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light text-navy">Staff Required:</th>
+                    <td id="trStaffReq">--</td>
+                    <th class="bg-light text-navy">Shift Timing:</th>
+                    <td id="trShift">--</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light text-navy">Deployment Start Date:</th>
+                    <td id="trStartDate">--</td>
+                    <th class="bg-light text-navy">Request Date:</th>
+                    <td id="trRequestDate">--</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light text-navy">Campus Address:</th>
+                    <td colspan="3" id="trAddress">--</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Assigned Staff Roster Preview (Shows if status is Staff Assigned or Active) -->
+            <div id="assignedStaffBox" class="mt-4 p-4 rounded-3 bg-light border" style="display: none;">
+              <h5 class="fw-bold text-navy mb-3"><i class="bi bi-person-badge-fill text-warning me-2"></i>Assigned Workforce Personnel</h5>
+              <div id="assignedStaffList" class="row g-3">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+              <span class="text-muted small"><i class="bi bi-clock-history me-1"></i> Status refreshed live from central management store.</span>
+              <a href="customer/dashboard.html" class="btn btn-outline-secondary btn-sm">
+                Open Full Customer Portal <i class="bi bi-box-arrow-up-right ms-1"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Empty State (When ID Not Found) -->
+          <div class="agency-card p-5 text-center" id="trackNotFoundCard" style="display: none;">
+            <div class="empty-state-icon text-danger mb-3"><i class="bi bi-exclamation-octagon"></i></div>
+            <h4 class="fw-bold text-navy mb-2">Request ID Not Found</h4>
+            <p class="text-muted small mb-4">We could not locate any active record matching the entered identifier. Please verify the ID or submit a new requirement.</p>
+            <a href="request-service.html" class="btn btn-agency-gold">Submit New Request</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="agency-footer">
+    <div class="container text-center">
+      © 2026 Perfect Protection Security Agency. All Rights Reserved. (Final Year Project)
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app-data.js"></script>
+  <script src="js/app-engine.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let queryId = urlParams.get('id') || 'REQ-2026-1001';
+
+      const searchForm = document.getElementById('trackSearchForm');
+      const inputId = document.getElementById('trackInputId');
+      if (inputId && queryId) {
+        inputId.value = queryId;
+      }
+
+      function loadRequest(reqId) {
+        const req = window.ppsaEngine.getRequestById(reqId);
+        const card = document.getElementById('trackCard');
+        const notFound = document.getElementById('trackNotFoundCard');
+
+        if (!req) {
+          if (card) card.style.display = 'none';
+          if (notFound) notFound.style.display = 'block';
+          return;
+        }
+
+        if (card) card.style.display = 'block';
+        if (notFound) notFound.style.display = 'none';
+
+        const setTxt = (id, txt) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = txt;
+        };
+
+        setTxt('trReqIdDisplay', req.id);
+        setTxt('trOrgName', req.organizationName);
+        setTxt('trServiceName', req.serviceName);
+        setTxt('trStaffReq', `${req.securityGuards} Guards, ${req.housekeepingStaff} Housekeeping (Total: ${req.totalStaff})`);
+        setTxt('trShift', req.shift);
+        setTxt('trStartDate', req.startDate);
+        setTxt('trRequestDate', req.requestDate);
+        setTxt('trAddress', req.address);
+
+        const badge = document.getElementById('trCurrentStatusBadge');
+        if (badge) {
+          badge.textContent = req.status;
+          badge.className = `badge-status status-${req.status.toLowerCase().replace(/\s+/g, '-')}`;
+        }
+
+        // Update Stepper Nodes:
+        // Submitted -> Under Review -> Approved -> Staff Assigned -> Service Active -> Completed
+        const statusOrder = ['Pending', 'Under Review', 'Approved', 'Staff Assigned', 'Active', 'Completed'];
+        const nodeMap = {
+          'Pending': 'stepNode-submitted',
+          'Under Review': 'stepNode-review',
+          'Approved': 'stepNode-approved',
+          'Staff Assigned': 'stepNode-assigned',
+          'Active': 'stepNode-active',
+          'Completed': 'stepNode-completed'
+        };
+
+        const currentIdx = statusOrder.indexOf(req.status);
+
+        statusOrder.forEach((st, idx) => {
+          const nodeId = nodeMap[st];
+          const nodeEl = document.getElementById(nodeId);
+          if (!nodeEl) return;
+
+          nodeEl.classList.remove('completed', 'current');
+          if (idx < currentIdx) {
+            nodeEl.classList.add('completed');
+          } else if (idx === currentIdx) {
+            nodeEl.classList.add('current');
+          }
+        });
+
+        // Show assigned staff if assigned or active
+        const assignedBox = document.getElementById('assignedStaffBox');
+        const assignedList = document.getElementById('assignedStaffList');
+        if (assignedBox && assignedList) {
+          const assignments = window.ppsaEngine.getAssignments().filter(a => a.organizationName === req.organizationName);
+          if (assignments.length > 0) {
+            assignedBox.style.display = 'block';
+            assignedList.innerHTML = assignments.map(a => `
+              <div class="col-md-6">
+                <div class="p-3 bg-white rounded-3 border d-flex align-items-center gap-3">
+                  <div class="staff-avatar-badge ${a.staffType === 'Housekeeping' ? 'housekeeping' : ''}">
+                    <i class="bi ${a.staffType === 'Housekeeping' ? 'bi-brush' : 'bi-shield-shaded'}"></i>
+                  </div>
+                  <div>
+                    <strong class="text-navy">${a.staffName}</strong>
+                    <div class="small text-muted">${a.staffId} • ${a.designation} (${a.shift})</div>
+                    <span class="badge bg-light text-navy border small">Assignment: ${a.assignmentId}</span>
+                  </div>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            assignedBox.style.display = 'none';
+          }
+        }
+      }
+
+      if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const idVal = inputId.value.trim();
+          if (idVal) {
+            loadRequest(idVal);
+          }
+        });
+      }
+
+      if (queryId) {
+        loadRequest(queryId);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Staff & Services | Perfect Protection Security Agency</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .wizard-step-pane {
+      display: none;
+    }
+    .wizard-step-pane.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-subbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <span><i class="bi bi-shield-check text-warning me-1"></i> Official Institutional Staffing Portal</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="track-request.html"><i class="bi bi-search me-1"></i> Track Request</a>
+        <a href="login.html" class="fw-bold"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="agency-navbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand brand-badge" href="index.html">
+          <div class="brand-shield-icon"><i class="bi bi-shield-shaded"></i></div>
+          <div class="brand-title-wrap">
+            <span class="brand-main-title">Perfect Protection</span>
+            <span class="brand-sub-title">Security & Housekeeping Services</span>
+          </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#agencyNavDropdown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="agencyNavDropdown">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="industries.html">Industries</a></li>
+            <li class="nav-item"><a class="nav-link" href="how-it-works.html">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <a href="login.html" class="btn btn-agency-outline">Login</a>
+            <a href="request-service.html" class="btn btn-agency-gold active">Request Staff</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="py-4 bg-navy text-white text-center">
+    <div class="container py-2">
+      <span class="section-tag bg-warning bg-opacity-25 text-warning border-warning border-opacity-50">Staffing Requisition Form</span>
+      <h1 class="h2 fw-bold text-white mb-2">Request Security & Housekeeping Staff</h1>
+      <p class="small text-light opacity-75 max-width-600 mx-auto mb-0">
+        Submit your institutional requirements. Fast response with verified workforce deployment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Wizard Form Container -->
+  <section class="py-5 bg-light">
+    <div class="container py-2">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          
+          <div class="agency-card p-4 p-md-5">
+
+            <!-- Stepper Progress Nodes -->
+            <div class="wizard-progress-bar">
+              <div class="wizard-step-node active" data-step="1">
+                <div class="step-node-circle">1</div>
+                <span class="step-node-label">Organization</span>
+              </div>
+              <div class="wizard-step-node" data-step="2">
+                <div class="step-node-circle">2</div>
+                <span class="step-node-label">Service</span>
+              </div>
+              <div class="wizard-step-node" data-step="3">
+                <div class="step-node-circle">3</div>
+                <span class="step-node-label">Staff Breakdown</span>
+              </div>
+              <div class="wizard-step-node" data-step="4">
+                <div class="step-node-circle">4</div>
+                <span class="step-node-label">Review</span>
+              </div>
+            </div>
+
+            <!-- The Wizard Form -->
+            <form id="requestStaffWizardForm" novalidate>
+              
+              <!-- ========================================================
+                   STEP 1: ORGANIZATION INFORMATION
+                   ======================================================== -->
+              <div class="wizard-step-pane active" id="wizardStep1">
+                <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+                  <div>
+                    <h4 class="fw-bold text-navy mb-1">Step 1 — Organization Information</h4>
+                    <p class="text-muted small mb-0">Provide primary credentials of your school, office, hospital or enterprise.</p>
+                  </div>
+                  <span class="badge bg-light text-navy border">Step 1 of 4</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-7">
+                    <label class="form-label" for="reqOrgName">Organization / Institution Name <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqOrgName" placeholder="e.g. Government Higher Secondary School" required>
+                    <div class="invalid-feedback">Organization name is required.</div>
+                  </div>
+
+                  <div class="col-md-5">
+                    <label class="form-label" for="reqOrgType">Organization Type <span class="req">*</span></label>
+                    <select class="form-select" id="reqOrgType" required>
+                      <option value="">-- Select Type --</option>
+                      <option value="Government School">Government School</option>
+                      <option value="Government Office">Government Office</option>
+                      <option value="College">College / Educational Institution</option>
+                      <option value="Hospital">Hospital / Healthcare</option>
+                      <option value="Factory">Factory / Industrial Facility</option>
+                      <option value="Commercial Organization">Commercial Organization</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select organization type.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqContactPerson">Contact Person Name <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqContactPerson" placeholder="e.g. Dr. Rajesh Sen (Principal)" required>
+                    <div class="invalid-feedback">Contact person name is required.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqEmail">Official Email <span class="req">*</span></label>
+                    <input type="email" class="form-control" id="reqEmail" placeholder="admin@school.gov.in" required>
+                    <div class="invalid-feedback">Valid email required.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqPhone">Phone Number <span class="req">*</span></label>
+                    <input type="tel" class="form-control" id="reqPhone" placeholder="10-digit Mobile number" required>
+                    <div class="invalid-feedback">Valid 10-digit phone required.</div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="form-label" for="reqAddress">Physical Campus / Office Address <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqAddress" placeholder="Plot / Street / Sector / Campus Area" required>
+                    <div class="invalid-feedback">Address is required.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqCity">City <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqCity" value="Capital City" required>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqState">State <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqState" value="Maharashtra" required>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqPincode">Pincode <span class="req">*</span></label>
+                    <input type="text" class="form-control" id="reqPincode" value="400001" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ========================================================
+                   STEP 2: SERVICE REQUIREMENT
+                   ======================================================== -->
+              <div class="wizard-step-pane" id="wizardStep2">
+                <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+                  <div>
+                    <h4 class="fw-bold text-navy mb-1">Step 2 — Service Requirement</h4>
+                    <p class="text-muted small mb-0">Select the service type, primary package, shift, and start date.</p>
+                  </div>
+                  <span class="badge bg-light text-navy border">Step 2 of 4</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="reqServiceId">Primary Service Package <span class="req">*</span></label>
+                    <select class="form-select" id="reqServiceId" required>
+                      <option value="">-- Choose Service --</option>
+                      <option value="SRV-101">School Security Guard Service - Security</option>
+                      <option value="SRV-102">Government Office Security - Security</option>
+                      <option value="SRV-103">Hospital & Healthcare Security - Security</option>
+                      <option value="SRV-104">Factory & Industrial Security - Security</option>
+                      <option value="SRV-201">Institutional Housekeeping & Cleaning - Housekeeping</option>
+                      <option value="SRV-202">Government Office Deep Cleaning - Housekeeping</option>
+                      <option value="SRV-203">Hospital Clinical Sanitation - Housekeeping</option>
+                      <option value="SRV-204">Facility Support & Maintenance - Housekeeping</option>
+                    </select>
+                    <div class="invalid-feedback">Please choose a service.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="reqShift">Required Shift <span class="req">*</span></label>
+                    <select class="form-select" id="reqShift" required>
+                      <option value="Morning">Morning Shift (07:00 AM - 03:00 PM)</option>
+                      <option value="Evening">Evening Shift (03:00 PM - 11:00 PM)</option>
+                      <option value="Night">Night Shift (11:00 PM - 07:00 AM)</option>
+                      <option value="Full Day">Full Day Shift (08:00 AM - 05:00 PM)</option>
+                      <option value="Rotational">24/7 Rotational (Continuous 3 Shifts)</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqStartDate">Deployment Start Date <span class="req">*</span></label>
+                    <input type="date" class="form-control" id="reqStartDate" required>
+                    <div class="invalid-feedback">Valid future date is required.</div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqDuration">Expected Contract Duration</label>
+                    <select class="form-select" id="reqDuration">
+                      <option value="6 Months">6 Months</option>
+                      <option value="12 Months" selected>12 Months (1 Year)</option>
+                      <option value="24 Months">24 Months (2 Years)</option>
+                      <option value="36 Months">36 Months (3 Years)</option>
+                      <option value="Ad-hoc Event">Ad-hoc / Short Duration</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="reqWorkingDays">Working Days Per Week</label>
+                    <select class="form-select" id="reqWorkingDays">
+                      <option value="Monday to Saturday" selected>Monday to Saturday (6 Days)</option>
+                      <option value="All 7 Days">All 7 Days (Continuous)</option>
+                      <option value="Monday to Friday">Monday to Friday (5 Days)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ========================================================
+                   STEP 3: ADDITIONAL REQUIREMENTS & STAFF BREAKDOWN
+                   ======================================================== -->
+              <div class="wizard-step-pane" id="wizardStep3">
+                <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+                  <div>
+                    <h4 class="fw-bold text-navy mb-1">Step 3 — Workforce Breakdown</h4>
+                    <p class="text-muted small mb-0">Specify the breakdown of security guards, supervisors, and housekeeping staff.</p>
+                  </div>
+                  <span class="badge bg-light text-navy border">Step 3 of 4</span>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-3 bg-light border text-center">
+                      <i class="bi bi-shield-shaded text-navy fs-3 mb-2 d-block"></i>
+                      <label class="form-label fw-bold" for="reqSecGuards">Security Guards</label>
+                      <input type="number" class="form-control text-center fs-5 fw-bold" id="reqSecGuards" min="0" value="2">
+                      <small class="text-muted">Standard gate & patrolling</small>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-3 bg-light border text-center">
+                      <i class="bi bi-person-badge-fill text-warning fs-3 mb-2 d-block"></i>
+                      <label class="form-label fw-bold" for="reqSupervisors">Security Supervisors</label>
+                      <input type="number" class="form-control text-center fs-5 fw-bold" id="reqSupervisors" min="0" value="0">
+                      <small class="text-muted">Roster & shift lead</small>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="p-3 rounded-3 bg-light border text-center">
+                      <i class="bi bi-stars text-success fs-3 mb-2 d-block"></i>
+                      <label class="form-label fw-bold" for="reqHkStaff">Housekeeping Staff</label>
+                      <input type="number" class="form-control text-center fs-5 fw-bold" id="reqHkStaff" min="0" value="2">
+                      <small class="text-muted">Cleaning & sanitation</small>
+                    </div>
+                  </div>
+
+                  <!-- Dynamic Total Staff Display -->
+                  <div class="col-12 mt-3">
+                    <div class="p-3 rounded-3 bg-navy text-white d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-people-fill text-warning fs-4"></i>
+                        <div>
+                          <strong class="d-block">Total Personnel Required</strong>
+                          <small class="text-light opacity-75">Combined security & housekeeping workforce allocated to your organization</small>
+                        </div>
+                      </div>
+                      <div class="fs-3 fw-bold text-warning" id="totalStaffDisplay">4</div>
+                    </div>
+                    <div id="staffRequirementError" class="text-danger small mt-1" style="display: none;">
+                      Total required staff must be at least 1 person.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mt-3">
+                    <label class="form-label" for="reqGenderPref">Gender Preference (Where applicable)</label>
+                    <select class="form-select" id="reqGenderPref">
+                      <option value="Any / Balanced">Any / Balanced Roster</option>
+                      <option value="Male Only">Male Only</option>
+                      <option value="Female Only">Female Only (e.g. Girls School / Hostel)</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6 mt-3">
+                    <label class="form-label" for="reqSpecialNotes">Special Instructions & Facility Notes</label>
+                    <textarea class="form-control" id="reqSpecialNotes" rows="2" placeholder="e.g. Night guards must have torch & radio; School requires female housekeeping in junior wing."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ========================================================
+                   STEP 4: REVIEW SUMMARY
+                   ======================================================== -->
+              <div class="wizard-step-pane" id="wizardStep4">
+                <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+                  <div>
+                    <h4 class="fw-bold text-navy mb-1">Step 4 — Review Requirement Summary</h4>
+                    <p class="text-muted small mb-0">Please verify your details before final requisition dispatch.</p>
+                  </div>
+                  <span class="badge bg-light text-navy border">Step 4 of 4</span>
+                </div>
+
+                <div class="table-responsive mb-4">
+                  <table class="table table-bordered align-middle">
+                    <tbody>
+                      <tr>
+                        <th class="bg-light text-navy" style="width: 25%;">Organization:</th>
+                        <td id="revOrgName" class="fw-bold">--</td>
+                        <th class="bg-light text-navy" style="width: 25%;">Type:</th>
+                        <td id="revOrgType">--</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-light text-navy">Contact Person:</th>
+                        <td id="revContact">--</td>
+                        <th class="bg-light text-navy">Campus Location:</th>
+                        <td id="revAddress">--</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-light text-navy">Service Requested:</th>
+                        <td id="revService" class="fw-bold text-navy">--</td>
+                        <th class="bg-light text-navy">Working Days:</th>
+                        <td id="revWorkingDays">--</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-light text-navy">Shift Timing:</th>
+                        <td id="revShift">--</td>
+                        <th class="bg-light text-navy">Start Date & Duration:</th>
+                        <td><span id="revStartDate">--</span> (<span id="revDuration">--</span>)</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-light text-navy">Staff Required:</th>
+                        <td colspan="3" id="revStaffBreakdown" class="fw-bold text-navy">--</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-light text-navy">Special Notes:</th>
+                        <td colspan="3" id="revNotes" class="text-muted small">--</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="alert alert-info d-flex align-items-center gap-2 small">
+                  <i class="bi bi-info-circle-fill fs-5"></i>
+                  <div>
+                    Upon submission, your requirement will be assigned a permanent <strong>Request ID</strong>. You will be able to track live progress from verification to staff assignment and active deployment.
+                  </div>
+                </div>
+              </div>
+
+              <!-- ========================================================
+                   STEP 5: SUCCESS CONFIRMATION
+                   ======================================================== -->
+              <div class="wizard-step-pane" id="wizardStep5">
+                <div class="text-center py-4">
+                  <div class="mb-3">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 4.5rem;"></i>
+                  </div>
+                  <h2 class="fw-bold text-navy mb-2">Request Submitted Successfully!</h2>
+                  <p class="text-secondary max-width-600 mx-auto mb-4">
+                    Your institutional service request has been registered in the workforce management system. Our operations officer is reviewing the duty roster.
+                  </p>
+
+                  <!-- Success Details Card -->
+                  <div class="bg-light p-4 rounded-3 border text-start mx-auto mb-4" style="max-width: 580px;">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                      <span class="text-muted small">Generated Request ID</span>
+                      <strong class="text-navy fs-5" id="successRequestId">REQ-2026-XXXX</strong>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                      <span class="text-muted small">Organization</span>
+                      <strong id="successOrgName">--</strong>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                      <span class="text-muted small">Service Package</span>
+                      <span id="successService">--</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                      <span class="text-muted small">Staff Required</span>
+                      <span class="badge bg-navy text-white" id="successStaffCount">--</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                      <span class="text-muted small">Request Date</span>
+                      <span id="successDate">--</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="text-muted small">Current Status</span>
+                      <span class="badge-status status-pending">Pending Verification</span>
+                    </div>
+                  </div>
+
+                  <!-- Direct Actions -->
+                  <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="#" id="btnTrackSubmittedRequest" class="btn btn-agency-gold btn-lg px-4">
+                      <i class="bi bi-clock-history me-2"></i> Track Request Status
+                    </a>
+                    <a href="customer/dashboard.html" class="btn btn-agency-primary btn-lg px-4">
+                      <i class="bi bi-speedometer2 me-2"></i> Open Customer Portal
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Wizard Footer Navigation Buttons -->
+              <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" id="wizardControlButtons">
+                <button type="button" class="btn btn-outline-secondary px-4" id="wizardPrevBtn" style="display: none;">
+                  <i class="bi bi-arrow-left me-1"></i> Previous
+                </button>
+                <div class="ms-auto d-flex gap-2">
+                  <button type="button" class="btn btn-agency-primary px-4" id="wizardNextBtn">
+                    Next Step <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                  <button type="button" class="btn btn-agency-gold px-4" id="wizardSubmitBtn" style="display: none;">
+                    <i class="bi bi-check2-circle me-1"></i> Submit Request
+                  </button>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="agency-footer">
+    <div class="container text-center">
+      © 2026 Perfect Protection Security Agency. All Rights Reserved. (Final Year Project)
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app-data.js"></script>
+  <script src="js/app-engine.js"></script>
+  <script src="js/request-wizard.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
