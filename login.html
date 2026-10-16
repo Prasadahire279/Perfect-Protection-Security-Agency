@@ -127,20 +127,31 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/app-data.js"></script>
   <script src="js/app-engine.js"></script>
+  <!-- API Bridge -->
+  <script src="js/api.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      if (PPSA_API.auth.isLoggedIn()) {
+        window.location.href = PPSA_API.auth.isAdmin()
+          ? 'admin/dashboard.html' : 'customer/dashboard.html';
+        return;
+      }
+
       let activeRole = 'customer';
       const btnCust = document.getElementById('roleBtnCustomer');
       const btnAdmin = document.getElementById('roleBtnAdmin');
       const emailInput = document.getElementById('loginEmail');
       const title = document.getElementById('loginRoleTitle');
       const form = document.getElementById('portalLoginForm');
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'alert alert-danger mt-3 d-none';
+      form.appendChild(errorMsg);
 
       btnCust.addEventListener('click', () => {
         activeRole = 'customer';
         btnCust.className = 'btn btn-sm btn-agency-primary rounded-2';
         btnAdmin.className = 'btn btn-sm btn-outline-secondary border-0 rounded-2';
-        emailInput.value = 'principal.ghss@gov.in';
+        emailInput.value = 'principal.ghss';
         title.textContent = 'Customer / Org Login';
       });
 
@@ -148,16 +159,32 @@
         activeRole = 'admin';
         btnAdmin.className = 'btn btn-sm btn-agency-primary rounded-2';
         btnCust.className = 'btn btn-sm btn-outline-secondary border-0 rounded-2';
-        emailInput.value = 'admin@perfectprotection.agency';
+        emailInput.value = 'admin';
         title.textContent = 'Administrator Login';
       });
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (activeRole === 'admin') {
-          window.location.href = 'admin/dashboard.html';
+        const username = emailInput.value.trim();
+        const password = document.getElementById('loginPassword')?.value || '';
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Signing in...';
+        errorMsg.classList.add('d-none');
+
+        const res = await PPSA_API.auth.login(username, password);
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Portal';
+
+        if (res && res.ok) {
+          const user = PPSA_API.auth.getUser();
+          const isAdmin = user && user.roles && user.roles.includes('ROLE_ADMIN');
+          window.location.href = isAdmin ? 'admin/dashboard.html' : 'customer/dashboard.html';
         } else {
-          window.location.href = 'customer/dashboard.html';
+          errorMsg.textContent = (res && res.data && res.data.message) || 'Login failed. Check credentials.';
+          errorMsg.classList.remove('d-none');
         }
       });
     });
