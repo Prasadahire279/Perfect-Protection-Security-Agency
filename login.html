@@ -64,22 +64,22 @@
             <!-- Login Form -->
             <form id="portalLoginForm" novalidate>
               <div class="mb-3">
-                <label class="form-label" for="loginEmail">Email Address <span class="req">*</span></label>
+                <label class="form-label" for="loginEmail">Email Address or Username <span class="req">*</span></label>
                 <div class="input-group">
-                  <span class="input-group-text"><i class="bi bi-envelope text-muted"></i></span>
-                  <input type="email" class="form-control" id="loginEmail" value="principal.ghss@gov.in" required>
+                  <span class="input-group-text"><i class="bi bi-person-fill text-muted"></i></span>
+                  <input type="text" class="form-control" id="loginEmail" value="principal.ghss@gov.in" placeholder="Username or official email" required autocomplete="username">
                 </div>
-                <div class="invalid-feedback">Valid email required.</div>
+                <div class="invalid-feedback">Username or email is required.</div>
               </div>
 
               <div class="mb-3">
                 <div class="d-flex justify-content-between align-items-center">
                   <label class="form-label mb-0" for="loginPassword">Password <span class="req">*</span></label>
-                  <a href="#" class="small text-gold fw-bold" onclick="alert('Demo Mode: Click Login directly to enter portal!')">Forgot Password?</a>
+                  <a href="#" class="small text-gold fw-bold" onclick="alert('Demo Mode: Click Login directly or use admin123 / school123 to enter portal!')">Demo Password?</a>
                 </div>
                 <div class="input-group mt-1">
                   <span class="input-group-text"><i class="bi bi-key text-muted"></i></span>
-                  <input type="password" class="form-control" id="loginPassword" value="••••••••" required>
+                  <input type="password" class="form-control" id="loginPassword" value="school123" placeholder="Enter password" required autocomplete="current-password">
                 </div>
               </div>
 
@@ -99,12 +99,12 @@
             <div class="mt-4 pt-3 border-top text-center">
               <span class="small text-muted d-block mb-2">⚡ Project Viva Quick Switcher:</span>
               <div class="d-flex justify-content-center gap-2">
-                <a href="customer/dashboard.html" class="btn btn-outline-primary btn-sm">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="btnQuickCustomer">
                   <i class="bi bi-building me-1"></i> Customer Portal
-                </a>
-                <a href="admin/dashboard.html" class="btn btn-navy text-white btn-sm">
+                </button>
+                <button type="button" class="btn btn-navy text-white btn-sm" id="btnQuickAdmin">
                   <i class="bi bi-shield-shaded text-warning me-1"></i> Admin Portal
-                </a>
+                </button>
               </div>
             </div>
 
@@ -131,28 +131,41 @@
   <script src="js/api.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      if (PPSA_API.auth.isLoggedIn()) {
-        window.location.href = PPSA_API.auth.isAdmin()
-          ? 'admin/dashboard.html' : 'customer/dashboard.html';
+      const urlParams = new URLSearchParams(window.location.search);
+      const form = document.getElementById('portalLoginForm');
+      const emailInput = document.getElementById('loginEmail');
+      const passInput = document.getElementById('loginPassword');
+      const btnCust = document.getElementById('roleBtnCustomer');
+      const btnAdmin = document.getElementById('roleBtnAdmin');
+      const title = document.getElementById('loginRoleTitle');
+      
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'alert alert-danger mt-3 d-none';
+      form.appendChild(errorMsg);
+
+      // Handle explicit logout
+      if (urlParams.get('logout') === 'true') {
+        localStorage.removeItem('ppsa_jwt');
+        localStorage.removeItem('ppsa_user');
+        localStorage.removeItem('ppsa_currentUser');
+        if (window.ppsaEngine) window.ppsaEngine.clearCurrentUser();
+      } else if (PPSA_API.auth.isLoggedIn() && urlParams.get('force') !== 'true') {
+        const user = PPSA_API.auth.getUser();
+        const isAdmin = user && user.roles && user.roles.includes('ROLE_ADMIN');
+        window.location.href = isAdmin ? 'admin/dashboard.html' : 'customer/dashboard.html';
         return;
       }
 
       let activeRole = 'customer';
-      const btnCust = document.getElementById('roleBtnCustomer');
-      const btnAdmin = document.getElementById('roleBtnAdmin');
-      const emailInput = document.getElementById('loginEmail');
-      const title = document.getElementById('loginRoleTitle');
-      const form = document.getElementById('portalLoginForm');
-      const errorMsg = document.createElement('div');
-      errorMsg.className = 'alert alert-danger mt-3 d-none';
-      form.appendChild(errorMsg);
 
       btnCust.addEventListener('click', () => {
         activeRole = 'customer';
         btnCust.className = 'btn btn-sm btn-agency-primary rounded-2';
         btnAdmin.className = 'btn btn-sm btn-outline-secondary border-0 rounded-2';
-        emailInput.value = 'principal.ghss';
+        emailInput.value = 'principal.ghss@gov.in';
+        passInput.value = 'school123';
         title.textContent = 'Customer / Org Login';
+        errorMsg.classList.add('d-none');
       });
 
       btnAdmin.addEventListener('click', () => {
@@ -160,13 +173,54 @@
         btnAdmin.className = 'btn btn-sm btn-agency-primary rounded-2';
         btnCust.className = 'btn btn-sm btn-outline-secondary border-0 rounded-2';
         emailInput.value = 'admin';
+        passInput.value = 'admin123';
         title.textContent = 'Administrator Login';
+        errorMsg.classList.add('d-none');
+      });
+
+      // Quick Viva Helpers
+      document.getElementById('btnQuickCustomer')?.addEventListener('click', () => {
+        const demoCust = {
+          token: 'demo-token-customer',
+          username: 'principal.ghss',
+          email: 'principal.ghss@gov.in',
+          fullName: 'Dr. Rajesh Sen',
+          roles: ['ROLE_CUSTOMER'],
+          orgName: 'Government Higher Secondary School',
+          orgId: 'ORG-1001'
+        };
+        localStorage.setItem('ppsa_jwt', demoCust.token);
+        localStorage.setItem('ppsa_user', JSON.stringify(demoCust));
+        localStorage.setItem('ppsa_currentUser', JSON.stringify(demoCust));
+        window.location.href = 'customer/dashboard.html';
+      });
+
+      document.getElementById('btnQuickAdmin')?.addEventListener('click', () => {
+        const demoAdmin = {
+          token: 'demo-token-admin',
+          username: 'admin',
+          email: 'admin@perfectprotection.agency',
+          fullName: 'Chief Operations Officer',
+          roles: ['ROLE_ADMIN'],
+          orgName: 'Agency Central Command'
+        };
+        localStorage.setItem('ppsa_jwt', demoAdmin.token);
+        localStorage.setItem('ppsa_user', JSON.stringify(demoAdmin));
+        localStorage.setItem('ppsa_currentUser', JSON.stringify(demoAdmin));
+        window.location.href = 'admin/dashboard.html';
       });
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = emailInput.value.trim();
-        const password = document.getElementById('loginPassword')?.value || '';
+        const password = passInput.value.trim();
+
+        if (!username) {
+          emailInput.classList.add('is-invalid');
+          return;
+        } else {
+          emailInput.classList.remove('is-invalid');
+        }
 
         const submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
@@ -183,7 +237,7 @@
           const isAdmin = user && user.roles && user.roles.includes('ROLE_ADMIN');
           window.location.href = isAdmin ? 'admin/dashboard.html' : 'customer/dashboard.html';
         } else {
-          errorMsg.textContent = (res && res.data && res.data.message) || 'Login failed. Check credentials.';
+          errorMsg.textContent = (res && res.data && res.data.message) || 'Login failed. Please check credentials.';
           errorMsg.classList.remove('d-none');
         }
       });

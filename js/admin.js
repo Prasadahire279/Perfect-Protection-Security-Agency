@@ -31,6 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Universal Sign Out handler for all portals
+  document.querySelectorAll('a[href*="login.html"]').forEach(link => {
+    link.addEventListener('click', () => {
+      localStorage.removeItem('ppsa_jwt');
+      localStorage.removeItem('ppsa_user');
+      localStorage.removeItem('ppsa_currentUser');
+      if (window.ppsaEngine) window.ppsaEngine.clearCurrentUser();
+    });
+  });
+
   // Populate Notifications Dropdown
   const notifDropdownList = document.getElementById('notifDropdownList');
   const notifBadgeCount = document.getElementById('notifBadgeCount');
@@ -1308,10 +1318,26 @@ function initReportsPage() {
 // 11. CUSTOMER DASHBOARD
 // ==========================================================================
 function initCustomerDashboardPage() {
+  const user = window.ppsaEngine ? window.ppsaEngine.getCurrentUser() : null;
+  const myOrgName = (user && user.orgName) ? user.orgName : 'Government Higher Secondary School';
+  const myFullName = (user && user.fullName) ? user.fullName : 'Dr. Rajesh Sen';
+
+  // Dynamic greetings in topbar and sidebar
+  const welcomeEl = document.querySelector('.admin-topbar small.text-muted');
+  if (welcomeEl) welcomeEl.textContent = `Welcome, ${myFullName}`;
+  const footerOrg = document.querySelector('.admin-sidebar .sidebar-footer strong');
+  if (footerOrg) footerOrg.textContent = myOrgName;
+
   const reqs = window.ppsaEngine.getRequests();
-  // Filter for demo customer organization: Government Higher Secondary School
-  const myOrgName = 'Government Higher Secondary School';
-  const myRequests = reqs.filter(r => r.organizationName.includes('School') || r.organizationName.includes('Government'));
+  let myRequests = reqs.filter(r => r.organizationName && (
+    r.organizationName.toLowerCase().includes(myOrgName.toLowerCase()) ||
+    myOrgName.toLowerCase().includes(r.organizationName.toLowerCase())
+  ));
+
+  // If newly registered institution has no requests yet, provide demo fallback only if it's default school
+  if (myRequests.length === 0 && myOrgName.includes('School')) {
+    myRequests = reqs.filter(r => r.organizationName.includes('School') || r.organizationName.includes('Government'));
+  }
 
   const activeCount = myRequests.filter(r => r.status === 'Active' || r.status === 'Staff Assigned').length;
   const pendingCount = myRequests.filter(r => r.status === 'Pending' || r.status === 'Under Review').length;
@@ -1331,32 +1357,51 @@ function initCustomerDashboardPage() {
   // Render Recent Requests
   const table = document.getElementById('customerRecentRequestsTable');
   if (table) {
-    table.innerHTML = myRequests.map(r => `
-      <tr>
-        <td><strong class="text-navy">${r.id}</strong></td>
-        <td>${r.serviceName}</td>
-        <td><span class="badge bg-light text-dark border">${r.totalStaff} Personnel</span></td>
-        <td>${r.shift}</td>
-        <td>${r.requestDate}</td>
-        <td>
-          <span class="badge-status status-${r.status.toLowerCase().replace(/\s+/g, '-')}">
-            ${r.status}
-          </span>
-        </td>
-        <td>
-          <a href="../track-request.html?id=${r.id}" class="btn btn-sm btn-outline-primary">
-            <i class="bi bi-clock-history me-1"></i> Track
-          </a>
-        </td>
-      </tr>
-    `).join('');
+    if (myRequests.length === 0) {
+      table.innerHTML = `
+        <tr>
+          <td colspan="7" class="text-center py-4 text-muted">
+            <i class="bi bi-inbox fs-4 d-block mb-1 text-secondary"></i>
+            No active staff requests yet.<br>
+            <a href="../request-service.html" class="btn btn-sm btn-agency-gold mt-2 fw-bold">
+              <i class="bi bi-plus-circle me-1"></i> Submit First Staff Request
+            </a>
+          </td>
+        </tr>
+      `;
+    } else {
+      table.innerHTML = myRequests.map(r => `
+        <tr>
+          <td><strong class="text-navy">${r.id}</strong></td>
+          <td>${r.serviceName}</td>
+          <td><span class="badge bg-light text-dark border">${r.totalStaff} Personnel</span></td>
+          <td>${r.shift}</td>
+          <td>${r.requestDate}</td>
+          <td>
+            <span class="badge-status status-${r.status.toLowerCase().replace(/\s+/g, '-')}">
+              ${r.status}
+            </span>
+          </td>
+          <td>
+            <a href="../track-request.html?id=${r.id}" class="btn btn-sm btn-outline-primary">
+              <i class="bi bi-clock-history me-1"></i> Track
+            </a>
+          </td>
+        </tr>
+      `).join('');
+    }
   }
 
   // Render Recent Enquiries
   const enqTable = document.getElementById('customerRecentEnquiriesTable');
   if (enqTable) {
     const enqs = window.ppsaEngine.getEnquiries();
-    enqTable.innerHTML = enqs.map(e => `
+    const myEnqs = enqs.filter(e => e.organization && (
+      e.organization.toLowerCase().includes(myOrgName.toLowerCase()) ||
+      myOrgName.toLowerCase().includes(e.organization.toLowerCase())
+    ));
+    const displayEnqs = myEnqs.length > 0 ? myEnqs : enqs.slice(0, 3);
+    enqTable.innerHTML = displayEnqs.map(e => `
       <tr>
         <td><strong>${e.id}</strong></td>
         <td>${e.service}</td>

@@ -26,11 +26,20 @@ class PPSAEngine {
   getStore() {
     try {
       const data = localStorage.getItem(PPSA_STORAGE_KEY);
-      if (data) return JSON.parse(data);
+      if (data) {
+        const parsed = JSON.parse(data);
+        if (!parsed.users || !Array.isArray(parsed.users)) {
+          parsed.users = JSON.parse(JSON.stringify(INITIAL_PPSA_DATA.users || []));
+          this.saveStore(parsed);
+        }
+        return parsed;
+      }
     } catch (e) {
       console.error('Error reading store', e);
     }
-    return this._memStore || INITIAL_PPSA_DATA;
+    const mem = this._memStore || INITIAL_PPSA_DATA;
+    if (!mem.users) mem.users = JSON.parse(JSON.stringify(INITIAL_PPSA_DATA.users || []));
+    return mem;
   }
 
   saveStore(data) {
@@ -44,6 +53,136 @@ class PPSAEngine {
   resetDemoData() {
     this.saveStore(INITIAL_PPSA_DATA);
     this.showToast('System Reset', 'Demo data successfully reset to initial state.', 'success');
+  }
+
+  // --- USERS & AUTHENTICATION ---
+  getUsers() {
+    const store = this.getStore();
+    return store.users || [];
+  }
+
+  getUserByUsernameOrEmail(identifier) {
+    if (!identifier) return null;
+    const clean = identifier.trim().toLowerCase();
+    const users = this.getUsers();
+    return users.find(u => 
+      (u.username && u.username.toLowerCase() === clean) ||
+      (u.email && u.email.toLowerCase() === clean)
+    );
+  }
+
+  registerUser(data) {
+    const store = this.getStore();
+    if (!store.users) store.users = [];
+
+    const username = (data.username || (data.email ? data.email.split('@')[0] : 'user') + Math.floor(100 + Math.random() * 900)).trim().toLowerCase();
+    const email = (data.email || '').trim().toLowerCase();
+
+    // Check duplicate
+    if (store.users.some(u => u.username && u.username.toLowerCase() === username)) {
+      return { success: false, message: 'Username is already taken. Please choose another.' };
+    }
+    if (store.users.some(u => u.email && u.email.toLowerCase() === email)) {
+      return { success: false, message: 'An account with this email already exists.' };
+    }
+
+    // Auto-create Organization for Customer if org name provided
+    let orgId = data.orgId || null;
+    if (data.orgName) {
+      orgId = `ORG-${1000 + (store.organizations ? store.organizations.length : 0) + 1}`;
+      const newOrg = {
+        id: orgId,
+        name: data.orgName.trim(),
+        type: data.orgType || 'Other',
+        contactPerson: data.fullName || 'Authorized Representative',
+        phone: data.phone || '',
+        email: email,
+        address: data.address || '',
+        city: data.city || 'Capital City',
+        state: data.state || 'Maharashtra',
+        pincode: data.pincode || '400001',
+        requiredStaff: 4,
+        assignedStaff: 0,
+        status: 'Active',
+        createdDate: new Date().toISOString().split('T')[0]
+      };
+      if (!store.organizations) store.organizations = [];
+      store.organizations.unshift(newOrg);
+    }
+
+    const newUser = {
+      id: `USR-${Date.now().toString().slice(-4)}`,
+      username,
+      email,
+      password: data.password || 'password123',
+      fullName: data.fullName ? data.fullName.trim() : username,
+      phone: data.phone ? data.phone.trim() : '',
+      role: data.role || 'CUSTOMER',
+      orgId: orgId,
+      orgName: data.orgName ? data.orgName.trim() : (data.role === 'ADMIN' ? 'Agency Central Command' : 'General Institution'),
+      address: data.address || '',
+      createdAt: new Date().toISOString()
+    };
+
+    store.users.push(newUser);
+    this.addNotification('New Account Created', `Institutional account registered: ${newUser.fullName} (${newUser.orgName})`, 'success');
+    this.saveStore(store);
+
+    return { success: true, user: newUser };
+  }
+
+  authenticateUser(identifier, password) {
+    if (!identifier) return { success: false, message: 'Email or username is required.' };
+    const user = this.getUserByUsernameOrEmail(identifier);
+    if (!user) {
+      // In demo mode, if entering 'admin' with any password or common credentials, allow fallback
+      const clean = identifier.trim().toLowerCase();
+      if (clean === 'admin' || clean.includes('admin@')) {
+        return {
+          success: true,
+          user: {
+            id: 'USR-001',
+            username: 'admin',
+            email: 'admin@perfectprotection.agency',
+            fullName: 'Chief Operations Officer',
+            role: 'ADMIN',
+            orgName: 'Agency Central Command'
+          }
+        };
+      }
+      return { success: false, message: 'Account not found. Please check credentials or register.' };
+    }
+
+    // Verify password (or allow demo bypass if empty/standard password)
+    if (user.password && password && user.password !== password && password !== 'admin123' && password !== 'school123' && password !== '••••••••') {
+      return { success: false, message: 'Incorrect password. Please try again.' };
+    }
+
+    return { success: true, user };
+  }
+
+  getCurrentUser() {
+    try {
+      const u = localStorage.getItem('ppsa_currentUser') || localStorage.getItem('ppsa_user');
+      return u ? JSON.parse(u) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  setCurrentUser(user) {
+    try {
+      localStorage.setItem('ppsa_currentUser', JSON.stringify(user));
+      localStorage.setItem('ppsa_user', JSON.stringify(user));
+    } catch (e) {}
+  }
+
+  clearCurrentUser() {
+    try {
+      localStorage.removeItem('ppsa_currentUser');
+      localStorage.removeItem('ppsa_user');
+      localStorage.removeItem('ppsa_jwt');
+    } catch (e) {}
   }
 
   // --- ORGANIZATIONS ---

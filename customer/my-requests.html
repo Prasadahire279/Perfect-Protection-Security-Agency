@@ -144,27 +144,43 @@
     document.addEventListener('DOMContentLoaded', () => {
       const tbody = document.getElementById('myRequestsTableBody');
       if (tbody && window.ppsaEngine) {
+        const user = window.ppsaEngine.getCurrentUser();
+        const myOrgName = (user && user.orgName) ? user.orgName : 'Government Higher Secondary School';
+        const footerOrg = document.querySelector('.admin-sidebar .sidebar-footer strong');
+        if (footerOrg) footerOrg.textContent = myOrgName;
+
         const reqs = window.ppsaEngine.getRequests();
-        const myReqs = reqs.filter(r => r.organizationName.includes('School') || r.organizationName.includes('Government'));
-        tbody.innerHTML = myReqs.map(r => `
-          <tr>
-            <td><strong class="text-navy">${r.id}</strong></td>
-            <td>
-              <div class="fw-bold">${r.serviceName}</div>
-              <small class="text-muted">${r.duration}</small>
-            </td>
-            <td><span class="badge bg-light text-navy border">${r.securityGuards} Guards</span></td>
-            <td><span class="badge bg-light text-success border">${r.housekeepingStaff} Cleaners</span></td>
-            <td>${r.shift}</td>
-            <td>${r.startDate}</td>
-            <td><span class="badge-status status-${r.status.toLowerCase().replace(/\s+/g, '-')}">${r.status}</span></td>
-            <td>
-              <a href="../track-request.html?id=${r.id}" class="btn btn-sm btn-outline-primary">
-                <i class="bi bi-clock-history me-1"></i> Track
-              </a>
-            </td>
-          </tr>
-        `).join('');
+        let myReqs = reqs.filter(r => r.organizationName && (
+          r.organizationName.toLowerCase().includes(myOrgName.toLowerCase()) ||
+          myOrgName.toLowerCase().includes(r.organizationName.toLowerCase())
+        ));
+        if (myReqs.length === 0 && myOrgName.includes('School')) {
+          myReqs = reqs.filter(r => r.organizationName.includes('School') || r.organizationName.includes('Government'));
+        }
+
+        if (myReqs.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="8" class="text-center py-4 text-muted"><i class="bi bi-inbox fs-4 d-block mb-1 text-secondary"></i>No requests submitted yet. Click <a href="../request-service.html" class="text-navy fw-bold">New Request</a> to submit one.</td></tr>`;
+        } else {
+          tbody.innerHTML = myReqs.map(r => `
+            <tr>
+              <td><strong class="text-navy">${r.id}</strong></td>
+              <td>
+                <div class="fw-bold">${r.serviceName}</div>
+                <small class="text-muted">${r.duration}</small>
+              </td>
+              <td><span class="badge bg-light text-navy border">${r.securityGuards} Guards</span></td>
+              <td><span class="badge bg-light text-success border">${r.housekeepingStaff} Cleaners</span></td>
+              <td>${r.shift}</td>
+              <td>${r.startDate}</td>
+              <td><span class="badge-status status-${r.status.toLowerCase().replace(/\s+/g, '-')}">${r.status}</span></td>
+              <td>
+                <a href="../track-request.html?id=${r.id}" class="btn btn-sm btn-outline-primary">
+                  <i class="bi bi-clock-history me-1"></i> Track
+                </a>
+              </td>
+            </tr>
+          `).join('');
+        }
       }
     });
   </script>

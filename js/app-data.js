@@ -805,5 +805,31 @@ const INITIAL_PPSA_DATA = {
       type: 'warning',
       read: true
     }
+  ],
+
+  // Registered Users (Authentication & Portals)
+  users: [
+    {
+      id: 'USR-001',
+      username: 'admin',
+      email: 'admin@perfectprotection.agency',
+      password: 'admin123',
+      fullName: 'Chief Operations Officer',
+      phone: '9890011223',
+      role: 'ADMIN',
+      orgId: null,
+      orgName: 'Agency Central Command'
+    },
+    {
+      id: 'USR-002',
+      username: 'principal.ghss',
+      email: 'principal.ghss@gov.in',
+      password: 'school123',
+      fullName: 'Dr. Rajesh Sen',
+      phone: '9876543210',
+      role: 'CUSTOMER',
+      orgId: 'ORG-1001',
+      orgName: 'Government Higher Secondary School'
+    }
   ]
 };

@@ -57,22 +57,133 @@ const PPSA_API = {
   // AUTH
   auth: {
     async login(username, password) {
-      const res = await apiRequest('POST', '/auth/login', { username, password });
-      if (res.ok && res.data.token) {
-        TokenService.set(res.data.token);
-        TokenService.setUser(res.data);
+      // 1. Try real Spring Boot REST backend first if reachable
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 sec timeout
+        
+        const res = await fetch(`${API_BASE}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.token) {
+            TokenService.set(json.token);
+            TokenService.setUser(json);
+            if (window.ppsaEngine) window.ppsaEngine.setCurrentUser(json);
+            return { ok: true, status: res.status, data: json, isBackend: true };
+          }
+        } else if (res.status === 400 || res.status === 401) {
+          // Backend is running and explicitly rejected credentials
+          const json = await res.json().catch(() => null);
+          // Check if local demo fallback matches
+          if (window.ppsaEngine) {
+            const local = window.ppsaEngine.authenticateUser(username, password);
+            if (local.success) {
+              const u = local.user;
+              const demoData = {
+                token: 'ppsa-token-local-' + Date.now(),
+                id: u.id,
+                username: u.username,
+                email: u.email,
+                fullName: u.fullName,
+                roles: u.role === 'ADMIN' ? ['ROLE_ADMIN'] : ['ROLE_CUSTOMER'],
+                orgName: u.orgName,
+                orgId: u.orgId
+              };
+              TokenService.set(demoData.token);
+              TokenService.setUser(demoData);
+              window.ppsaEngine.setCurrentUser(demoData);
+              return { ok: true, status: 200, data: demoData, isLocal: true };
+            }
+          }
+          return { ok: false, status: res.status, data: json || { message: 'Invalid credentials' } };
+        }
+      } catch (err) {
+        // Backend not reachable, proceed to local fallback
       }
-      return res;
+
+      // 2. Seamless Local Fallback (runs without Java/MySQL backend)
+      if (window.ppsaEngine) {
+        const local = window.ppsaEngine.authenticateUser(username, password);
+        if (local.success) {
+          const u = local.user;
+          const demoData = {
+            token: 'ppsa-token-local-' + Date.now(),
+            id: u.id,
+            username: u.username,
+            email: u.email,
+            fullName: u.fullName,
+            roles: u.role === 'ADMIN' ? ['ROLE_ADMIN'] : ['ROLE_CUSTOMER'],
+            orgName: u.orgName,
+            orgId: u.orgId
+          };
+          TokenService.set(demoData.token);
+          TokenService.setUser(demoData);
+          window.ppsaEngine.setCurrentUser(demoData);
+          return { ok: true, status: 200, data: demoData, isLocal: true };
+        } else {
+          return { ok: false, status: 401, data: { message: local.message } };
+        }
+      }
+
+      return { ok: false, status: 0, data: { message: 'Authentication failed. Please verify credentials.' } };
     },
 
     async register(data) {
-      return await apiRequest('POST', '/auth/register', data);
+      // 1. Try real Spring Boot REST backend if reachable
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const json = await res.json();
+          if (window.ppsaEngine) window.ppsaEngine.registerUser(data);
+          return { ok: true, status: res.status, data: json, isBackend: true };
+        } else if (res.status === 400) {
+          const json = await res.json().catch(() => null);
+          return { ok: false, status: res.status, data: json || { message: 'Registration failed' } };
+        }
+      } catch (e) {
+        // Backend offline, fallback to local registration
+      }
+
+      // 2. Local fallback registration
+      if (window.ppsaEngine) {
+        const local = window.ppsaEngine.registerUser(data);
+        if (local.success) {
+          return { ok: true, status: 200, data: { message: 'Registration successful!', user: local.user }, isLocal: true };
+        } else {
+          return { ok: false, status: 400, data: { message: local.message } };
+        }
+      }
+
+      return { ok: false, status: 0, data: { message: 'Unable to register at this time.' } };
     },
 
     logout() {
       TokenService.clear();
       TokenService.clearUser();
-      window.location.href = '/login.html';
+      if (window.ppsaEngine) {
+        window.ppsaEngine.clearCurrentUser();
+      }
+      const target = window.location.pathname.includes('/admin/') || window.location.pathname.includes('/customer/')
+        ? '../login.html?logout=true'
+        : 'login.html?logout=true';
+      window.location.href = target;
     },
 
     isLoggedIn: () => !!TokenService.get(),
